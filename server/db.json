@@ -1,0 +1,22 @@
+{
+  "tutorials": [
+    {
+      "id": 1,
+      "title": "How to make a website",
+      "description": "This is a tutorial on how to make a website",
+      "published": true
+    },
+    {
+      "id": 2,
+      "title": "Amazing Microsoft",
+      "description": "This is a tutorial on how to use Microsoft",
+      "published": false
+    },
+    {
+      "id": 3,
+      "title": "Java for all",
+      "description": "Tips on how to use Java",
+      "published": false
+    }
+  ]
+}
