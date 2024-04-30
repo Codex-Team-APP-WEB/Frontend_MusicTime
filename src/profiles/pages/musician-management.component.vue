@@ -9,11 +9,11 @@ export default {
   components: {TutorialItemCreateAndEditDialog, DataManager},
   data() {
     return {
-      title: { singular: 'Tutorial', plural: 'Tutorials' },
+      title: { singular: 'Musician', plural: 'Musicians' },
       tutorials: [],
       tutorial: {},
       selectedTutorials: [],
-      statuses: [{label: 'Published', value: 'published'}, {label: 'Unpublished', value: 'unpublished'}],
+      statuses: [{label: 'Available', value: 'available'}, {label: 'Unavailable', value: 'unavailable'}],
       tutorialService: null,
       createAndEditDialogIsVisible: false,
       isEdit: false,
@@ -31,8 +31,8 @@ export default {
     // Get the severity color according to status
     getSeverity(status) {
       switch (status) {
-        case 'Published': return 'success';
-        case 'Unpublished': return 'info';
+        case 'Available': return 'success';
+        case 'Unavailable': return 'info';
         default:  return null;
       }
     },
@@ -105,7 +105,7 @@ export default {
           .then((response) => {
             this.tutorial = Tutorial.toDisplayableTutorial(response.data);
             this.tutorials.push(this.tutorial);
-            this.notifySuccessfulAction("Tutorial Created");
+            this.notifySuccessfulAction("Musician created");
           });
     },
 
@@ -118,7 +118,7 @@ export default {
           .then((response) => {
             this.tutorials[this.findIndexById(response.data.id)] =
                 Tutorial.toDisplayableTutorial(response.data);
-            this.notifySuccessfulAction("Tutorial Updated");
+            this.notifySuccessfulAction("Musician Updated");
           });
     },
 
@@ -129,7 +129,7 @@ export default {
           .then(() => {
             this.tutorials = this.tutorials.filter((t) => t.id !== this.tutorial.id);
             this.tutorial = {};
-            this.notifySuccessfulAction("Tutorial Deleted");
+            this.notifySuccessfulAction("Musician Deleted");
           });
     },
 
@@ -141,7 +141,7 @@ export default {
           this.tutorials = this.tutorials.filter((t) => t.id !== this.tutorial.id);
         });
       });
-      this.notifySuccessfulAction("Tutorials Deleted");
+      this.notifySuccessfulAction("Musician Deleted");
     }
 
     //#endregion Data Actions
@@ -170,7 +170,7 @@ export default {
         v-on:delete-selected-items="onDeleteSelectedItemsEventHandler($event)">
       <template #custom-columns>
         <pv-column :sortable="true" field="id"          header="Id"           style="min-width: 12rem"/>
-        <pv-column :sortable="true" field="title"       header="Title"        style="min-width: 16rem"/>
+        <pv-column :sortable="true" field="name"       header="Name"        style="min-width: 16rem"/>
         <pv-column :sortable="true" field="description" header="Description"  style="min-width: 16rem"/>
         <pv-column :sortable="true" field="status"      header="Status"       style="min-width: 16rem">
           <template #body="slotProps">
