@@ -43,6 +43,8 @@ import FloatLabel from "primevue/floatlabel";
 import Checkbox from "primevue/checkbox";
 import Rating from "primevue/rating";
 import Avatar from "primevue/avatar";
+import DataView from 'primevue/dataview';
+import DataViewLayoutOptions from 'primevue/dataviewlayoutoptions'   // optional
 import router from "./router/index.js";
 
 createApp(App)
@@ -51,6 +53,8 @@ createApp(App)
     .use(ToastService)
     .use(DialogService)
     .use(ConfirmationService)
+    .component('pv-data-view', DataView)
+    .component('pv-data-view-layout-options', DataViewLayoutOptions)
     .component('pv-button', Button)
     .component('pv-data-table', DataTable)
     .component('pv-column', Column)

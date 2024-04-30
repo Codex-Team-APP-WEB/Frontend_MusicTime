@@ -47,8 +47,8 @@ export default {
       <div class="p-fluid">
         <div class="field mt-5">
           <pv-float-label>
-            <label for="title">Title</label>
-            <pv-input-text id="title" v-model="item.title" :class="{'p-invalid': submitted && !item.title}"/>
+            <label for="name">Title</label>
+            <pv-input-text id="name" v-model="item.title" :class="{'p-invalid': submitted && !item.title}"/>
             <small v-if="submitted && !item.title" class="p-invalid">Title is required.</small>
           </pv-float-label>
         </div>

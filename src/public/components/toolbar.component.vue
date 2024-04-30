@@ -7,6 +7,8 @@ export default {
       items: [
         { label: 'Home', to: '/home'},
         { label: 'About', to: '/about'}
+
+
       ]
     }
 }
@@ -41,6 +43,12 @@ export default {
         <router-link to="/about">
           <pv-button label="About us" plain text />
         </router-link>
+
+        <router-link to="/subscription">
+          <pv-button label="Subscription" plain text />
+        </router-link>
+
+
 
         <pv-button label="Support" plain text />
       </div>
