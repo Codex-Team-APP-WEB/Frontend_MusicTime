@@ -31,7 +31,11 @@ export default {
           <pv-button label="Home" plain text />
         </router-link>
 
-        <pv-button label="Service" plain text />
+        <router-link to="/musician">
+          <pv-button label="Musician" plain text />
+        </router-link>
+
+
         <pv-button label="Contact" plain text />
 
         <router-link to="/about">
