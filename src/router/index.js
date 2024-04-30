@@ -1,12 +1,7 @@
-/**
- * Vue Router
- * @description: Vue Router configuration
- * @docs: https://router.vuejs.org/
- */
-
 import {createRouter, createWebHistory} from "vue-router";
 import HomeComponent from "../public/pages/home.component.vue";
 import AboutComponent from "../public/pages/about.component.vue";
+
 
 const router = createRouter({
     history: createWebHistory(),

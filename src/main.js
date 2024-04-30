@@ -1,10 +1,11 @@
-import { createApp } from 'vue'
+import {createApp} from 'vue'
 import './style.css'
 import App from './app.vue'
 import PrimeVue from "primevue/config";
 
+
 // PrimeVue Theme
-import 'primevue/resources/themes/saga-blue/theme.css';
+import 'primevue/resources/themes/aura-light-teal/theme.css';
 import 'primevue/resources/primevue.min.css';
 
 // PrimeIcons
@@ -41,6 +42,7 @@ import InputNumber from "primevue/inputnumber";
 import FloatLabel from "primevue/floatlabel";
 import Checkbox from "primevue/checkbox";
 import Rating from "primevue/rating";
+import Avatar from "primevue/avatar";
 import router from "./router/index.js";
 
 createApp(App)
@@ -71,4 +73,6 @@ createApp(App)
     .component('pv-float-label', FloatLabel)
     .component('pv-checkbox', Checkbox)
     .component('pv-rating', Rating)
+    .component('pv-avatar', Avatar)
     .mount('#app')
+

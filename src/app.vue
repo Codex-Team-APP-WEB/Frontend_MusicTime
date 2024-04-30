@@ -1,19 +1,19 @@
 <script>
 import Toolbar from "./public/components/toolbar.component.vue";
 import Footer from "./public/components/footer.component.vue";
+import Home from "./public/pages/home.component.vue";
+
 export default {
-  name: "App",
-  components: { Toolbar, Footer },
-  data() {
-    return {
-      isLoading: true // Define la propiedad de datos isLoading
-    };
-  },
+  name: "app",
+  components: { Toolbar, Footer, Home },
 }
 </script>
 
 <template>
+
   <Toolbar />
+  <Home />
+  <router-view />
 </template>
 
 <style scoped>
