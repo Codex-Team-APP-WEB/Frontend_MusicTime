@@ -1,0 +1,71 @@
+{
+  "tutorials": [
+    {
+      "id": 1,
+      "title": "How to make a website",
+      "description": "This is a tutorial on how to make a website",
+      "published": true
+    },
+    {
+      "id": 2,
+      "title": "Amazing Microsoft",
+      "description": "This is a tutorial on how to use Microsoft",
+      "published": false
+    },
+    {
+      "id": 3,
+      "title": "Java for all",
+      "description": "Tips on how to use Java",
+      "published": false
+    },
+    {
+      "id": 4,
+      "title": "Hello",
+      "description": "Aaaaa",
+      "published": true,
+      "status": "Published"
+    },
+    {
+      "id": 5,
+      "title": "Hello",
+      "description": "Aaaaa",
+      "published": false,
+      "status": "Unpublished"
+    }
+  ],
+  "musician": [
+    {
+      "id": 1,
+      "name": "How to make a website",
+      "manager": "John Doe",
+      "description": "This is ",
+      "available": true
+    },
+    {
+      "id": 2,
+      "name": "Amazing Microsoft",
+      "manager": "John Doe",
+      "description": "This is a tutorial on ",
+      "available": false
+    },
+    {
+      "id": 3,
+      "name": "Java for all",
+      "manager": "John Doe",
+      "description": " to use Java",
+      "available": false
+    },
+    {
+      "id": 4,
+      "description": "XD",
+      "available": true,
+      "status": "Available"
+    },
+    {
+      "id": 5,
+      "description": "dfsfsdf",
+      "available": true,
+      "status": "Available"
+    }
+  ]
+}
