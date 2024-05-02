@@ -1,20 +1,20 @@
 <script>
 import DataManager from "../../shared/components/data-manager.component.vue";
-import TutorialItemCreateAndEditDialog from "../components/musician-item-create-and-edit-dialog.component.vue";
-import {Tutorial} from "../models/musician.entity.js";
-import {TutorialsApiService} from "../services/musician-api.service.js";
+import MusicianItemCreateAndEditDialog from "../components/musician-item-create-and-edit-dialog.component.vue";
+import {Musician} from "../models/musician.entity.js";
+import {MusicianApiService} from "../services/musician-api.service.js";
 
 export default {
-  name: "tutorial-management",
-  components: {TutorialItemCreateAndEditDialog, DataManager},
+  name: "musician-management",
+  components: {MusicianItemCreateAndEditDialog, DataManager},
   data() {
     return {
       title: { singular: 'Musician', plural: 'Musicians' },
-      tutorials: [],
-      tutorial: {},
-      selectedTutorials: [],
+      musicians: [],
+      musician: {},
+      selectedMusicians: [],
       statuses: [{label: 'Available', value: 'available'}, {label: 'Unavailable', value: 'unavailable'}],
-      tutorialService: null,
+      musicianService: null,
       createAndEditDialogIsVisible: false,
       isEdit: false,
       submitted: false
@@ -38,7 +38,7 @@ export default {
     },
 
     findIndexById(id) {
-      return this.tutorials.findIndex((tutorial) => tutorial.id === id);
+      return this.musicians.findIndex((musician) => musician.id === id);
     },
 
     //#endregion Helper Methods
@@ -46,32 +46,32 @@ export default {
     //#region Data Manager Event Handlers
 
     onNewItemEventHandler() {
-      this.tutorial = {};
+      this.musician = {};
       this.submitted = false;
       this.isEdit = false;
       this.createAndEditDialogIsVisible = true;
     },
 
     onEditItemEventHandler(item) {
-      this.tutorial = item;
+      this.musician = item;
       this.submitted = false;
       this.isEdit = true;
       this.createAndEditDialogIsVisible = true;
     },
 
     onDeleteItemEventHandler(item) {
-      this.tutorial = item;
-      this.deleteTutorial();
+      this.musician = item;
+      this.deleteMusician();
     },
 
     onDeleteSelectedItemsEventHandler(selectedItems) {
-      this.selectedTutorials = selectedItems;
-      this.deleteSelectedTutorials();
+      this.selectedMusicians = selectedItems;
+      this.deleteSelectedMusicians();
     },
 
     //#endregion Data Manager Event Handlers
 
-    //#region Tutorial Item Create and Edit Dialog Event Handlers
+    //#region Musician Item Create and Edit Dialog Event Handlers
 
     onCanceledEventHandler() {
       this.createAndEditDialogIsVisible = false;
@@ -81,64 +81,64 @@ export default {
 
     onSavedEventHandler(item) {
       this.submitted = true;
-      if (this.tutorial.title.trim()) {
+      if (this.musician && this.musician.title && this.musician.title.trim()) {
         if (item.id) {
-          this.updateTutorial();
+          this.updateMusician();
         } else {
-          this.createTutorial();
+          this.createMusician();
         }
       }
       this.createAndEditDialogIsVisible = false;
       this.isEdit = false;
     },
 
-    //#endregion Data Manager Event Handlers
+    //#endregion Musician Item Create and Edit Dialog Event Handlers
 
     //#region Data Actions
 
     // Create a new item
 
-    createTutorial() {
-      this.tutorial.id = 0;
-      this.tutorial = Tutorial.fromDisplayableTutorial(this.tutorial);
-      this.tutorialsService.create(this.tutorial)
+    createMusician() {
+      this.musician.id = 0;
+      this.musician = Musician.fromDisplayableMusician(this.musician);
+      this.musicianService.create(this.musician)
           .then((response) => {
-            this.tutorial = Tutorial.toDisplayableTutorial(response.data);
-            this.tutorials.push(this.tutorial);
+            this.musician = Musician.toDisplayableMusician(response.data);
+            this.musicians.push(this.musician);
             this.notifySuccessfulAction("Musician created");
           });
     },
 
     // Update an existing item
 
-    updateTutorial() {
-      this.tutorial = Tutorial.fromDisplayableTutorial(this.tutorial);
-      this.tutorialsService
-          .update(this.tutorial.id, this.tutorial)
+    updateMusician() {
+      this.musician = Musician.fromDisplayableMusician(this.musician);
+      this.musicianService
+          .update(this.musician.id, this.musician)
           .then((response) => {
-            this.tutorials[this.findIndexById(response.data.id)] =
-                Tutorial.toDisplayableTutorial(response.data);
+            this.musicians[this.findIndexById(response.data.id)] =
+                Musician.toDisplayableMusician(response.data);
             this.notifySuccessfulAction("Musician Updated");
           });
     },
 
     // Delete a item
 
-    deleteTutorial() {
-      this.tutorialsService.delete(this.tutorial.id)
+    deleteMusician() {
+      this.musicianService.delete(this.musician.id)
           .then(() => {
-            this.tutorials = this.tutorials.filter((t) => t.id !== this.tutorial.id);
-            this.tutorial = {};
+            this.musicians = this.musicians.filter((t) => t.id !== this.musician.id);
+            this.musician = {};
             this.notifySuccessfulAction("Musician Deleted");
           });
     },
 
-    // Delete selected tutorials
+    // Delete selected musicians
 
-    deleteSelectedTutorials() {
-      this.selectedTutorials.forEach((tutorial) => {
-        this.tutorialsService.delete(tutorial.id).then(() => {
-          this.tutorials = this.tutorials.filter((t) => t.id !== this.tutorial.id);
+    deleteSelectedMusicians() {
+      this.selectedMusicians.forEach((musician) => {
+        this.musicianService.delete(musician.id).then(() => {
+          this.musicians = this.musicians.filter((t) => t.id !== this.musician.id);
         });
       });
       this.notifySuccessfulAction("Musician Deleted");
@@ -147,12 +147,12 @@ export default {
     //#endregion Data Actions
   },
   created() {
-    this.tutorialsService = new TutorialsApiService();
+    this.musicianService = new MusicianApiService();
 
-    this.tutorialsService.getAll().then((response) => {
+    this.musicianService.getAll().then((response) => {
       console.log(response.data);
-      let tutorials = response.data;
-      this.tutorials = tutorials.map((tutorial) => Tutorial.toDisplayableTutorial(tutorial));
+      let musicians = response.data;
+      this.musicians = musicians.map((musician) => Musician.toDisplayableMusician(musician));
     });
   }
 }
@@ -160,10 +160,10 @@ export default {
 
 <template>
   <div class="w-full">
-    <!-- Tutorial Data Manager -->
+    <!-- Musician Data Manager -->
     <data-manager
         :title=title
-        v-bind:items="tutorials"
+        v-bind:items="musicians"
         v-on:new-item="onNewItemEventHandler"
         v-on:edit-item="onEditItemEventHandler($event)"
         v-on:delete-item="onDeleteItemEventHandler($event)"
@@ -179,10 +179,10 @@ export default {
         </pv-column>
       </template>
     </data-manager>
-    <!-- Tutorial Item Create and Edit Dialog -->
-    <tutorial-item-create-and-edit-dialog
+    <!-- Musician Item Create and Edit Dialog -->
+    <musician-item-create-and-edit-dialog
         :statuses="statuses"
-        :item="tutorial"
+        :item="musician"
         :edit="isEdit"
         :visible="createAndEditDialogIsVisible"
         v-on:canceled="onCanceledEventHandler"
@@ -207,7 +207,7 @@ export default {
 }
 
 @media (min-width: 1024px) {
-  .tutorials {
+  .musicians {
     min-height: 100vh;
     display: flex;
     align-items: center;
