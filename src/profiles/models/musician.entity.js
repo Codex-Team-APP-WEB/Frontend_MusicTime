@@ -1,5 +1,4 @@
-
-export class Tutorial {
+export class Musician {
     constructor(id, name, description, available) {
         this.id = id;
         this.name = name;
@@ -9,21 +8,21 @@ export class Tutorial {
     }
 
 
-    static fromDisplayableTutorial(displayableTutorial) {
-        return new Tutorial(
-            displayableTutorial.id,
-            displayableTutorial.name,
-            displayableTutorial.description,
-            displayableTutorial.status.label === 'Available');
+    static fromDisplayableMusician(displayableMusician) {
+        return new Musician(
+            displayableMusician.id,
+            displayableMusician.name,
+            displayableMusician.description,
+            displayableMusician.status.label === 'Available');
     }
 
 
-    static toDisplayableTutorial(tutorial) {
+    static toDisplayableMusician(musician) {
         return {
-            id: tutorial.id,
-            name: tutorial.name,
-            description: tutorial.description,
-            status: tutorial.available === true ? 'Available' : 'Unavailable'
+            id: musician.id,
+            name: musician.name,
+            description: musician.description,
+            status: musician.available === true ? 'Available' : 'Unavailable'
         };
     }
 
