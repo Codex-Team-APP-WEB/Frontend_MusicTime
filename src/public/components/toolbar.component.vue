@@ -33,8 +33,8 @@ export default {
           <pv-button label="Home" plain text />
         </router-link>
 
-        <router-link to="/musician">
-          <pv-button label="Musician" plain text />
+        <router-link to="/Management">
+          <pv-button label="Management" plain text />
         </router-link>
 
 
@@ -48,6 +48,9 @@ export default {
           <pv-button label="Subscription" plain text />
         </router-link>
 
+        <router-link to="/musician">
+          <pv-button label="Musician" plain text />
+        </router-link>
 
 
         <pv-button label="Support" plain text />
@@ -75,6 +78,12 @@ export default {
   z-index: 100;
 
 }
+
+.button-margin {
+  margin-right: 10px; /* Ajusta este valor según tus necesidades */
+}
+
+</style>
 
 .button-margin {
   margin-right: 10px; /* Ajusta este valor según tus necesidades */
