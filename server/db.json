@@ -1,58 +1,24 @@
 {
-  "tutorials": [
-    {
-      "id": 1,
-      "title": "How to make a website",
-      "description": "This is a tutorial on how to make a website",
-      "published": true
-    },
-    {
-      "id": 2,
-      "title": "Amazing Microsoft",
-      "description": "This is a tutorial on how to use Microsoft",
-      "published": false
-    },
-    {
-      "id": 3,
-      "title": "Java for all",
-      "description": "Tips on how to use Java",
-      "published": false
-    },
-    {
-      "id": 4,
-      "title": "Hello",
-      "description": "Aaaaa",
-      "published": true,
-      "status": "Published"
-    },
-    {
-      "id": 5,
-      "title": "Hello",
-      "description": "Aaaaa",
-      "published": false,
-      "status": "Unpublished"
-    }
-  ],
   "musician": [
     {
       "id": 1,
-      "name": "How to make a website",
-      "manager": "John Doe",
-      "description": "This is ",
+      "name": "Grupo 5",
+      "manager": "David Orozco",
+      "description": "Grupo 5 es una banda peruana de cumbia y merengue fundada el 31 de enero de 1973 en la ciudad de Monsefú. Sus líderes, actualmente, son los hermanos: Elmer, Andy y Christian, hijos de Elmer Yaipén Uypan, fundador junto a su hermano Víctor.",
       "available": true
     },
     {
       "id": 2,
-      "name": "Amazing Microsoft",
-      "manager": "John Doe",
-      "description": "This is a tutorial on ",
+      "name": "Agua Marina",
+      "manager": "Manuel Quiroga Querevalú",
+      "description": "Agua Marina es una banda peruana de cumbia fundada el 30 de agosto de 1976 en la ciudad de Sechura, en el departamento de Piura.​Es considerada como la trilogía de la cumbia, junto con Armonía 10 y el Grupo 5, ​ pieza importante en el afianzamiento de la cumbia peruana como género musical.",
       "available": false
     },
     {
       "id": 3,
-      "name": "Java for all",
-      "manager": "John Doe",
-      "description": " to use Java",
+      "name": "Eddy Herrera",
+      "manager": "Eddy Herrera",
+      "description": "Eduardo José Herrera de los Ríos, más conocido como Eddy Herrera, es un cantante dominicano de merengue. Perteneció como uno de los grandes vocalistas del conjunto musical liderado por Wilfrido Vargas en la década de 1980. ",
       "available": false
     }
   ]
