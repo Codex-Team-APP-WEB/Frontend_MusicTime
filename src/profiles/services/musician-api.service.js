@@ -1,7 +1,7 @@
 
 import http from "../../shared/services/http-common.js";
 
-export class TutorialsApiService {
+export class MusicianApiService {
 
     getAll() {
         return http.get('/musician');
@@ -12,13 +12,13 @@ export class TutorialsApiService {
     }
 
 
-    create(tutorialResource) {
-        return http.post('/musician', tutorialResource);
+    create(musicianResource) {
+        return http.post('/musician', musicianResource);
     }
 
 
-    update(id, tutorialResource) {
-        return http.put(`/musician/${id}`, tutorialResource);
+    update(id, musicianResource) {
+        return http.put(`/musician/${id}`, musicianResource);
     }
 
 
