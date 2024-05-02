@@ -22,7 +22,7 @@ export default {
     activateSubscription2() {
       if (this.buttonText2 === 'Subscribe') {
         console.log('Subscription 2 activated');
-        this.buttonText2 = 'activated';
+        this.buttonText2 = 'Activated';
       } else {
         console.log('Subscription 2 deactivated');
         this.buttonText2 = 'Subscribe';
@@ -31,80 +31,39 @@ export default {
   }
 }
 </script>
+
 <template>
-  <div class="container text-center">
-    <h1>Plans</h1>
-    <div class="p-card custom-border mx-auto">
-      <div class="p-card-body">
-        <img class="card-image" :src="imagePath1" alt="subscription plan 1">
-        <div class="text-container">
-          <p>MusicBusiness</p>
-          <ul class="description-list">
-            <li>Promote your presentations</li>
-            <li>Contract management</li>
-            <li>International exhibition</li>
-            <li>Monetization Potential</li>
-          </ul>
-        </div>
-        <div class="button-container">
-          <pv-button @click="activateSubscription1">{{ buttonText1 }}</pv-button>
-        </div>
+  <div class="container">
+  <pv-card style="width: 25rem; overflow: hidden">
+    <template #header>
+      <img alt="user header" src="https://res.cloudinary.com/drkelnilg/image/upload/v1714552043/tlv0hxvu9ni2vuncz2jy.jpg" />
+    </template>
+    <template #title>Subscription - MusicBusiness</template>
+    <template #subtitle>Obten las funciones ahora!!!!</template>
+    <template #content>
+      <ul>
+        <li>Promote your presentations</li>
+        <li>Contract management</li>
+        <li>International exhibition</li>
+        <li>Monetization Potential</li>
+      </ul>
+    </template>
+    <template #footer>
+      <div class="button-container">
+        <pv-button @click="activateSubscription2">{{ buttonText2 }}</pv-button>
       </div>
-    </div>
-    <div class="p-card custom-border mx-auto">
-      <div class="p-card-body">
-        <img class="card-image" :src="imagePath2" alt="subscription plan 2">
-        <div class="text-container">
-          <p>Enterprise</p>
-          <ul class="description-list">
-            <li>Monetization Potential</li>
-            <li>Largest choice catalog</li>
-            <li>Quick contracts</li>
-            <li>Full features</li>
-          </ul>
-        </div>
-        <div class="button-container">
-          <pv-button @click="activateSubscription2">{{ buttonText2 }}</pv-button>
-        </div>
-      </div>
-    </div>
+    </template>
+  </pv-card>
   </div>
 </template>
 
 <style scoped>
 .container {
-  margin-top: 50px;
-}
-
-.p-card {
-  border-radius: 0;
-  width: calc(50% - 80px);
-  margin-right: 10px;
-  margin-bottom: 20px;
-  border: 1px solid #000;
-}
-
-.text-container {
-  text-align: left;
-  color: blue;
-  font-size: 25px;
-  font-weight: bold;
-}
-
-.description-list {
-  color: black;
-  font-weight: normal;
-  font-size: 20px;
-}
-
-.p-card-body {
-  padding: 20px;
-}
-
-.card-image {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
 }
 
 .button-container {
