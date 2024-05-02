@@ -1,4 +1,5 @@
 <script>
+import http from '../services/http-common';
 
 const defaultStyle = { width: '450px'};
 
@@ -9,8 +10,21 @@ export default {
     onCancel() {
       this.$emit('canceled');
     },
-    onSave() {
-      this.$emit('saved', this.entity);
+    async onSave() {
+      try {
+        if (this.edit) {
+          // Update existing entity
+          await http.put(`/${this.entityName}/${this.entity.id}`, this.entity);
+        } else {
+          // Create new entity
+          console.log('status')
+          console.log(this.entity.status)
+          await http.post(`/${this.entityName}`, this.entity);
+        }
+        this.$emit('saved', this.entity);
+      } catch (error) {
+        console.error('Error saving entity:', error);
+      }
     },
     getHeaderTitle() {
       return `${this.edit ? 'Edit' : 'New'} ${this.entityName}`;
@@ -20,11 +34,10 @@ export default {
     },
     getDialogStyle() {
       let dialogStyle = defaultStyle;
-      dialogStyle = this.size === 'standard' ? { width: '600px'} : defaultStyle;
-      dialogStyle = this.size === 'large' ? { width: '900px'} : defaultStyle;
+      dialogStyle = this.size === 'standard' ? { width: '600px'} : dialogStyle;
+      dialogStyle = this.size === 'large' ? { width: '900px'} : dialogStyle;
       return dialogStyle;
     }
-
   }
 }
 </script>
