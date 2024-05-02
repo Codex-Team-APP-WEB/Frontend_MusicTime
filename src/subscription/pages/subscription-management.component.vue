@@ -3,8 +3,6 @@ export default {
   name: "SubscriptionManagement",
   data() {
     return {
-      imagePath1: 'https://res.cloudinary.com/drkelnilg/image/upload/v1714552043/tlv0hxvu9ni2vuncz2jy.jpg',
-      imagePath2: 'https://res.cloudinary.com/drkelnilg/image/upload/v1714551882/melavsafwien50g2svpw.jpg',
       buttonText1: 'Subscribe',
       buttonText2: 'Subscribe'
     }
@@ -34,12 +32,12 @@ export default {
 
 <template>
   <div class="container">
-  <pv-card style="width: 25rem; overflow: hidden">
+  <pv-card style="width: 25rem; overflow: hidden;margin: 20px">
     <template #header>
       <img alt="user header" src="https://res.cloudinary.com/drkelnilg/image/upload/v1714552043/tlv0hxvu9ni2vuncz2jy.jpg" />
     </template>
     <template #title>Subscription - MusicBusiness</template>
-    <template #subtitle>Obten las funciones ahora!!!!</template>
+    <template #subtitle>Get the features now!!!!</template>
     <template #content>
       <ul>
         <li>Promote your presentations</li>
@@ -50,10 +48,31 @@ export default {
     </template>
     <template #footer>
       <div class="button-container">
-        <pv-button @click="activateSubscription2">{{ buttonText2 }}</pv-button>
+        <pv-button @click="activateSubscription1">{{ buttonText1 }}</pv-button>
       </div>
     </template>
   </pv-card>
+
+    <pv-card style="width: 25rem; overflow: hidden; margin: 20px">
+      <template #header>
+        <img alt="user header" src="https://res.cloudinary.com/drkelnilg/image/upload/v1714551882/melavsafwien50g2svpw.jpg" />
+      </template>
+      <template #title>Subscription - Enterprise</template>
+      <template #subtitle>Get the features now!!!!</template>
+      <template #content>
+        <ul>
+          <li> Greater number of contracts</li>
+          <li> Largest choice catalog</li>
+          <li>Quick contracts</li>
+          <li>Full features</li>
+        </ul>
+      </template>
+      <template #footer>
+        <div class="button-container">
+          <pv-button @click="activateSubscription2">{{ buttonText2 }}</pv-button>
+        </div>
+      </template>
+    </pv-card>
   </div>
 </template>
 
@@ -69,4 +88,6 @@ export default {
 .button-container {
   text-align: right;
 }
+
+
 </style>

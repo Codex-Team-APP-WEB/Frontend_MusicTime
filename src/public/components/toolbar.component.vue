@@ -83,7 +83,6 @@ export default {
   margin-right: 10px; /* Ajusta este valor según tus necesidades */
 }
 
-</style>
 
 .button-margin {
   margin-right: 10px; /* Ajusta este valor según tus necesidades */
