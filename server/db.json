@@ -35,13 +35,6 @@
   ],
   "musician": [
     {
-      "id": 1,
-      "name": "How to make a website",
-      "manager": "John Doe",
-      "description": "This is ",
-      "available": true
-    },
-    {
       "id": 2,
       "name": "Amazing Microsoft",
       "manager": "John Doe",
@@ -57,15 +50,73 @@
     },
     {
       "id": 4,
+      "name": "Prueba",
       "description": "XD",
       "available": true,
       "status": "Available"
     },
     {
-      "id": 5,
-      "description": "dfsfsdf",
-      "available": true,
-      "status": "Available"
+      "name": "Victor",
+      "description": "asdsa",
+      "status": {
+        "label": "Available",
+        "value": "available"
+      },
+      "id": 5
+    },
+    {
+      "name": "Victor",
+      "description": "asdsa",
+      "status": {
+        "label": "Available",
+        "value": "available"
+      },
+      "id": 6
+    },
+    {
+      "name": "Victors",
+      "description": "s",
+      "status": {
+        "label": "Available",
+        "value": "available"
+      },
+      "id": 7
+    },
+    {
+      "name": "Victor",
+      "description": "asdsa",
+      "status": {
+        "label": "Unavailable",
+        "value": "unavailable"
+      },
+      "id": 8
+    },
+    {
+      "name": "qwertf",
+      "description": "sdfg",
+      "status": {
+        "label": "Available",
+        "value": "available"
+      },
+      "id": 9
+    },
+    {
+      "name": "asdfg",
+      "description": "adsfg",
+      "status": {
+        "label": "Available",
+        "value": "available"
+      },
+      "id": 10
+    },
+    {
+      "name": "Victor",
+      "description": "asdsa",
+      "status": {
+        "label": "Available",
+        "value": "available"
+      },
+      "id": 11
     }
   ]
 }

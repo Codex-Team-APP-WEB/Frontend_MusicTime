@@ -2,7 +2,7 @@
 import CreateAndEdit from "../../shared/components/create-and-edit.component.vue";
 
 export default {
-  name: "tutorial-item-create-and-edit-dialog",
+  name: "musician-item-create-and-edit-dialog",
   components: {CreateAndEdit},
   props: {
     item: null,
@@ -41,15 +41,15 @@ export default {
 </script>
 
 <template>
-  <create-and-edit :entity="item" :visible="visible" entityName="Tutorial" @canceled="canceledEventHandler"
+  <create-and-edit :entity="item" :visible="visible" entityName="Musician" @canceled="canceledEventHandler"
                    @saved="savedEventHandler">
     <template #content>
       <div class="p-fluid">
         <div class="field mt-5">
           <pv-float-label>
-            <label for="name">Title</label>
-            <pv-input-text id="name" v-model="item.title" :class="{'p-invalid': submitted && !item.title}"/>
-            <small v-if="submitted && !item.title" class="p-invalid">Title is required.</small>
+            <label for="name">Name</label>
+            <pv-input-text id="name" v-model="item.name" :class="{'p-invalid': submitted && !item.name}"/>
+            <small v-if="submitted && !item.name" class="p-invalid">Name is required.</small>
           </pv-float-label>
         </div>
         <div class="p-field mt-5">

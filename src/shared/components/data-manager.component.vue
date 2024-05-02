@@ -2,7 +2,7 @@
 import {FilterMatchMode} from "primevue/api";
 
 export default {
-  name: "data-manager",
+  name: "musician-manager",
   inheritAttrs: false,
   props: {
     items: {type: Array, required: true},
