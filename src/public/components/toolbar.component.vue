@@ -38,8 +38,6 @@ export default {
         </router-link>
 
 
-        <pv-button label="Contact" plain text />
-
         <router-link to="/about">
           <pv-button label="About us" plain text />
         </router-link>
@@ -48,12 +46,7 @@ export default {
           <pv-button label="Subscription" plain text />
         </router-link>
 
-        <router-link to="/musician">
-          <pv-button label="Musician" plain text />
-        </router-link>
 
-
-        <pv-button label="Support" plain text />
       </div>
 
       <div class="flex align-items-center gap-2">

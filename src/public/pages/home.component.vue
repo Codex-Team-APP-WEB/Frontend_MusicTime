@@ -1,15 +1,14 @@
 <script>
+import MusicianView from "../../profiles/pages/musician-view.component.vue";
+
 export default {
-  name: "home"
+  name: "home",
+  components: {MusicianView}
 }
 </script>
 
 <template>
-
-  <div>
-    <h1>Hola</h1>
-  </div>
-
+<musician-view />
 </template>
 
 <style scoped>

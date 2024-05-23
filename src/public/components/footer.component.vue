@@ -6,7 +6,7 @@ export default {
 
 <template>
   <footer>
-    <p>&copy; 2021 ACME Learning Center</p>
+    <p>&copy; 2024 - MusicTime</p>
   </footer>
 </template>
 

@@ -44,6 +44,8 @@ import Checkbox from "primevue/checkbox";
 import Rating from "primevue/rating";
 import Avatar from "primevue/avatar";
 import DataView from 'primevue/dataview';
+import Badge from "primevue/badge";
+import Image from "primevue/image";
 import DataViewLayoutOptions from 'primevue/dataviewlayoutoptions'   // optional
 import router from "./router/index.js";
 
@@ -78,5 +80,7 @@ createApp(App)
     .component('pv-checkbox', Checkbox)
     .component('pv-rating', Rating)
     .component('pv-avatar', Avatar)
+    .component('pv-badge', Badge)
+    .component('pv-image', Image)
     .mount('#app')
 
