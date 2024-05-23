@@ -37,6 +37,9 @@ export default {
           <p><strong>Description:</strong> {{ musician.description }}</p>
         </template>
         <template #footer>
+          <router-link :to="`/contract/${musician.id}`">
+            <pv-button label="Hire" plain text />
+          </router-link>
         </template>
       </pv-card>
     </div>

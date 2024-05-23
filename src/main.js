@@ -46,6 +46,8 @@ import Avatar from "primevue/avatar";
 import DataView from 'primevue/dataview';
 import Badge from "primevue/badge";
 import Image from "primevue/image";
+import Accordion from "primevue/accordion";
+import AccordionTab from "primevue/accordiontab";
 import DataViewLayoutOptions from 'primevue/dataviewlayoutoptions'   // optional
 import router from "./router/index.js";
 
@@ -82,5 +84,7 @@ createApp(App)
     .component('pv-avatar', Avatar)
     .component('pv-badge', Badge)
     .component('pv-image', Image)
+    .component('pv-accordion', Accordion)
+    .component('pv-accordion-tab', AccordionTab)
     .mount('#app')
 
