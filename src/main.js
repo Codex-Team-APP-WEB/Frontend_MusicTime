@@ -48,6 +48,7 @@ import Badge from "primevue/badge";
 import Image from "primevue/image";
 import Accordion from "primevue/accordion";
 import AccordionTab from "primevue/accordiontab";
+import Divider from "primevue/divider";
 import DataViewLayoutOptions from 'primevue/dataviewlayoutoptions'   // optional
 import router from "./router/index.js";
 
@@ -86,5 +87,6 @@ createApp(App)
     .component('pv-image', Image)
     .component('pv-accordion', Accordion)
     .component('pv-accordion-tab', AccordionTab)
+    .component('pv-divider', Divider)
     .mount('#app')
 
