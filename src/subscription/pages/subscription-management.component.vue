@@ -1,80 +1,67 @@
-<script>
-export default {
-  name: "SubscriptionManagement",
-  data() {
-    return {
-      buttonText1: 'Subscribe',
-      buttonText2: 'Subscribe'
-    }
-  },
-  methods: {
-    activateSubscription1() {
-      if (this.buttonText1 === 'Subscribe') {
-        console.log('Subscription 1 activated');
-        this.buttonText1 = 'activated';
-      } else {
-        console.log('Subscription 1 deactivated');
-        this.buttonText1 = 'Subscribe';
-      }
-    },
-    activateSubscription2() {
-      if (this.buttonText2 === 'Subscribe') {
-        console.log('Subscription 2 activated');
-        this.buttonText2 = 'Activated';
-      } else {
-        console.log('Subscription 2 deactivated');
-        this.buttonText2 = 'Subscribe';
-      }
-    }
-  }
-}
-</script>
-
 <template>
   <div class="container">
-  <pv-card style="width: 25rem; overflow: hidden;margin: 20px">
-    <template #header>
-      <img alt="user header" src="https://res.cloudinary.com/drkelnilg/image/upload/v1714552043/tlv0hxvu9ni2vuncz2jy.jpg" />
-    </template>
-    <template #title>Subscription - MusicBusiness</template>
-    <template #subtitle>Get the features now!!!!</template>
-    <template #content>
-      <ul>
-        <li>Promote your presentations</li>
-        <li>Contract management</li>
-        <li>International exhibition</li>
-        <li>Monetization Potential</li>
-      </ul>
-    </template>
-    <template #footer>
-      <div class="button-container">
-        <pv-button @click="activateSubscription1">{{ buttonText1 }}</pv-button>
-      </div>
-    </template>
-  </pv-card>
-
-    <pv-card style="width: 25rem; overflow: hidden; margin: 20px">
+    <pv-card v-for="(plan, index) in plans" :key="index" style="width: 25rem; overflow: hidden;margin: 20px">
       <template #header>
-        <img alt="user header" src="https://res.cloudinary.com/drkelnilg/image/upload/v1714551882/melavsafwien50g2svpw.jpg" />
+        <img :alt="'user header ' + index" :src="plan.image" style="width: 100%; height: 400px; object-fit: cover;" />
       </template>
-      <template #title>Subscription - Enterprise</template>
-      <template #subtitle>Get the features now!!!!</template>
+      <template #title>{{ 'Subscription - ' + plan.name }}</template>
+      <template #subtitle>{{ plan.message }}</template>
       <template #content>
         <ul>
-          <li> Greater number of contracts</li>
-          <li> Largest choice catalog</li>
-          <li>Quick contracts</li>
-          <li>Full features</li>
+          <li v-for="(feature, featureIndex) in plan.features" :key="featureIndex">{{ feature }}</li>
         </ul>
       </template>
       <template #footer>
-        <div class="button-container">
-          <pv-button @click="activateSubscription2">{{ buttonText2 }}</pv-button>
+        <div class="footer-content">
+          <div class="price-info">
+            <p style="font-weight: bold; font-size: 2.5em; margin-bottom: 0;">{{ '$' + plan.price }}</p>
+            <p style="margin-top: 0; color: gray;">{{ plan.price_per_month }}</p>
+          </div>
+          <div class="button-container">
+            <pv-button @click="activateSubscription(index)">{{ buttonText(index) }}</pv-button>
+          </div>
         </div>
       </template>
     </pv-card>
   </div>
 </template>
+
+<script>
+export default {
+  name: "SubscriptionManagement",
+  data() {
+    return {
+      plans: [],
+      buttonTexts: []
+    }
+  },
+  methods: {
+    activateSubscription(index) {
+      if (this.buttonTexts[index] === 'Subscribe') {
+        console.log('Subscription ' + (index + 1) + ' activated');
+        this.$set(this.buttonTexts, index, 'Activated');
+      } else {
+        console.log('Subscription ' + (index + 1) + ' deactivated');
+        this.$set(this.buttonTexts, index, 'Subscribe');
+      }
+    },
+    buttonText(index) {
+      return this.buttonTexts[index] || 'Subscribe';
+    }
+  },
+  mounted() {
+    fetch(import.meta.env.VITE_API_BASE_URL + '/plans')
+        .then(response => response.json())
+        .then(data => {
+          this.plans = data;
+          this.buttonTexts = new Array(data.length).fill('Subscribe');
+        })
+        .catch(error => {
+          console.error(error);
+        });
+  }
+}
+</script>
 
 <style scoped>
 .container {
@@ -84,10 +71,8 @@ export default {
   height: 100vh;
   margin: 0;
 }
-
 .button-container {
   text-align: right;
 }
-
 
 </style>

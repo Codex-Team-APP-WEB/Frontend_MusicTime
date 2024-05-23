@@ -24,5 +24,34 @@
       "image": "https://res.cloudinary.com/djia8bsvr/image/upload/v1714744341/eddy_herrera_h309en.jpg",
       "available": false
     }
+  ],
+  "plans": [
+    {
+      "name": "MusicBusiness",
+      "message": "Get the features now!!!!",
+      "features": [
+        "Promote your presentations",
+        "Contract management",
+        "International exhibition",
+        "Monetization Potential"
+      ],
+      "image": "https://res.cloudinary.com/drkelnilg/image/upload/v1716507870/imagen_2024-05-23_184426272_wr69jg.png",
+      "price": 10,
+      "price_per_month": "per month"
+    },
+    {
+      "name": "Enterprise",
+      "message": "Get the features now!!!!",
+      "features": [
+        "Greater number of contracts",
+        "Largest choice catalog",
+        "Quick contracts",
+        "Full features"
+      ],
+      "image": "https://res.cloudinary.com/drkelnilg/image/upload/v1716509658/imagen_2024-05-23_191336133_qgdtcm.png",
+      "price": 15,
+      "price_per_month": "per month"
+    }
   ]
 }
+
