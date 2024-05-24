@@ -3,7 +3,7 @@ import './style.css'
 import App from './app.vue'
 import PrimeVue from "primevue/config";
 
-import axios from 'axios';
+
 // PrimeVue Theme
 import 'primevue/resources/themes/aura-light-teal/theme.css';
 import 'primevue/resources/primevue.min.css';
@@ -48,7 +48,6 @@ import Badge from "primevue/badge";
 import Image from "primevue/image";
 import Accordion from "primevue/accordion";
 import AccordionTab from "primevue/accordiontab";
-import Divider from "primevue/divider";
 import DataViewLayoutOptions from 'primevue/dataviewlayoutoptions'   // optional
 import router from "./router/index.js";
 
@@ -58,7 +57,6 @@ createApp(App)
     .use(ToastService)
     .use(DialogService)
     .use(ConfirmationService)
-    .use(axios)
     .component('pv-data-view', DataView)
     .component('pv-data-view-layout-options', DataViewLayoutOptions)
     .component('pv-button', Button)
@@ -88,7 +86,5 @@ createApp(App)
     .component('pv-image', Image)
     .component('pv-accordion', Accordion)
     .component('pv-accordion-tab', AccordionTab)
-    .component('pv-divider', Divider)
-
     .mount('#app')
 
