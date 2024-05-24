@@ -2,7 +2,7 @@
   <div class="container">
     <pv-card v-for="(plan, index) in plans" :key="index" style="width: 25rem; overflow: hidden;margin: 20px">
       <template #header>
-        <img :alt="'user header ' + index" :src="plan.image" style="width: 100%; height: 400px; object-fit: cover;" />
+        <img :alt="'user header ' + index" :src="plan.image" style="width: 100%; height: 200px; object-fit: cover;" />
       </template>
       <template #title>{{ 'Subscription - ' + plan.name }}</template>
       <template #subtitle>{{ plan.message }}</template>
@@ -18,7 +18,7 @@
             <p style="margin-top: 0; color: gray;">{{ plan.price_per_month }}</p>
           </div>
           <div class="button-container">
-            <pv-button @click="activateSubscription(index)">{{ buttonText(index) }}</pv-button>
+            <pv-button @click="goToPaymentGateway">{{ buttonText(index) }}</pv-button>
           </div>
         </div>
       </template>
@@ -36,17 +36,11 @@ export default {
     }
   },
   methods: {
-    activateSubscription(index) {
-      if (this.buttonTexts[index] === 'Subscribe') {
-        console.log('Subscription ' + (index + 1) + ' activated');
-        this.$set(this.buttonTexts, index, 'Activated');
-      } else {
-        console.log('Subscription ' + (index + 1) + ' deactivated');
-        this.$set(this.buttonTexts, index, 'Subscribe');
-      }
+    goToPaymentGateway() {
+      this.$router.push('/payment');
     },
     buttonText(index) {
-      return this.buttonTexts[index] || 'Subscribe';
+      return 'Subscribe';
     }
   },
   mounted() {
