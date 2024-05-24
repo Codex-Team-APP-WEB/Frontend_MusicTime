@@ -20,7 +20,7 @@ const router = createRouter({
         //Path con boton no es de toolbar
         { path: '/musician/:id', component: Musician, meta: { title: 'Musician' }, props: true },
         { path: '/contract/:id', component: ContractViewComponent, meta: { title: 'Contract' }, props: true },
-        { path: '/payment', component: paymentGatewayComponent, meta: { title: 'Payment' } },
+        { path: '/payment', component: paymentGatewayComponent, meta: { title: 'Payment' }  },
 
 
 

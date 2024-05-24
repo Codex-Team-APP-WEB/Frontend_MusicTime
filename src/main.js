@@ -3,7 +3,7 @@ import './style.css'
 import App from './app.vue'
 import PrimeVue from "primevue/config";
 
-
+import axios from 'axios';
 // PrimeVue Theme
 import 'primevue/resources/themes/aura-light-teal/theme.css';
 import 'primevue/resources/primevue.min.css';
@@ -57,6 +57,7 @@ createApp(App)
     .use(ToastService)
     .use(DialogService)
     .use(ConfirmationService)
+    .use(axios)
     .component('pv-data-view', DataView)
     .component('pv-data-view-layout-options', DataViewLayoutOptions)
     .component('pv-button', Button)

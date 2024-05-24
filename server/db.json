@@ -54,6 +54,43 @@
       "price": 15,
       "price_per_month": "per month"
     }
+  ],
+  "contracts": [
+    { "id": 1,
+      "name": "Pedro Castillo",
+      "status": "Activo",
+      "date": "2024-06-20"
+    },
+    { "id": 2,
+      "name": "Luis Perez",
+      "status": "Pendiente",
+      "date": "2024-06-15"
+    },
+    { "id": 3,
+      "name": "Ronald Campos",
+      "status": "Activo",
+      "date": "2024-06-16"
+    },
+    { "id": 4,
+      "name": "Juan Mana",
+      "status": "Pendiente",
+      "date": "2024-06-20"
+    },
+    { "id": 5,
+      "name": "Carlos Pingus",
+      "status": "Activo",
+      "date": "2024-06-21"
+    },
+    { "id": 6,
+      "name": "DJ Peligro",
+      "status": "Pendiente",
+      "date": "2024-06-22"
+    },
+    { "id": 7,
+      "name": "Francis Wisdow",
+      "status": "Activo",
+      "date": "2024-06-25"
+    }
   ]
 }
 
