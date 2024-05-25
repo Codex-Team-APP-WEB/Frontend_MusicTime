@@ -20,9 +20,41 @@
       "id": 3,
       "name": "Eddy Herrera",
       "manager": "Eddy Herrera",
-      "description": "Eduardo José Herrera de los Ríos, más conocido como Eddy Herrera, es un cantante dominicano de merengue. Perteneció como uno de los grandes vocalistas del conjunto musical liderado por Wilfrido Vargas en la década de 1980. ",
+      "description": "Eduardo José Herrera de los Ríos, más conocido como Eddy Herrera, es un cantante dominicano de merengue. Perteneció como uno de los grandes vocalistas del conjunto musical liderado por Wilfrido Vargas en la década de 1980.",
       "image": "https://res.cloudinary.com/djia8bsvr/image/upload/v1714744341/eddy_herrera_h309en.jpg",
       "available": false
+    },
+    {
+      "id": 4,
+      "name": "Armonía 10",
+      "manager": "Walter Lozada",
+      "description": "Armonía 10 es una agrupación peruana de cumbia fundada el 25 de junio de 1972 en Piura, Perú. Es conocida por ser una de las bandas más influyentes en la cumbia peruana y ha tenido varios éxitos a lo largo de su carrera.",
+      "image": "https://res.cloudinary.com/drkelnilg/image/upload/v1716591161/imagen_2024-05-24_175238241_e9kosg.png",
+      "available": true
+    },
+    {
+      "id": 5,
+      "name": "Los Mirlos",
+      "manager": "Jorge Rodríguez Grández",
+      "description": "Los Mirlos es una banda peruana de cumbia amazónica fundada en 1973 en Moyobamba, San Martín. Son conocidos por su estilo único que mezcla la cumbia con sonidos amazónicos, y han sido pioneros en este subgénero.",
+      "image": "https://res.cloudinary.com/drkelnilg/image/upload/v1716591194/imagen_2024-05-24_175312994_emghqb.png",
+      "available": true
+    },
+    {
+      "id": 6,
+      "name": "Grupo Néctar",
+      "manager": "Johnny Orosco",
+      "description": "Grupo Néctar fue una agrupación peruana de cumbia liderada por Johnny Orosco. Fundada en la década de 1990, alcanzaron gran popularidad con su estilo de cumbia tropical. La banda sufrió una trágica pérdida en 2007 cuando varios de sus miembros fallecieron en un accidente.",
+      "image": "https://res.cloudinary.com/drkelnilg/image/upload/v1716591234/imagen_2024-05-24_175348514_pwt2cj.png",
+      "available": false
+    },
+    {
+      "id": 7,
+      "name": "Ráfaga",
+      "manager": "Ariel Puchetta",
+      "description": "Ráfaga es una banda argentina de música tropical formada en 1994. Son conocidos por sus éxitos en la música de cumbia y han ganado numerosos premios por su contribución al género.",
+      "image": "https://res.cloudinary.com/drkelnilg/image/upload/v1716591313/imagen_2024-05-24_175511109_f3sgyv.png",
+      "available": true
     }
   ],
   "plans": [

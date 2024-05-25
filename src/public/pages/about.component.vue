@@ -1,20 +1,3 @@
-<template>
-  <div>
-    <h2 class="title">Contracts panel</h2>
-    <div class="search-container">
-      <input class="search-bar" type="text" v-model="search" placeholder="Search..." />
-    </div>
-    <pv-data-table :value="filteredContracts">
-      <pv-column v-for="col in columns" :key="col.field" :field="col.field" :header="col.header"></pv-column>
-      <pv-column header="">
-        <template #body="slotProps">
-          <pv-button label="View" @click="viewContract(slotProps.data)"></pv-button>
-        </template>
-      </pv-column>
-    </pv-data-table>
-  </div>
-</template>
-
 <script>
 import { ContractApiService } from '../../contract/services/contract-api.service';
 
@@ -58,6 +41,25 @@ export default {
   },
 };
 </script>
+
+<template>
+  <div>
+    <h2 class="title">Contracts panel</h2>
+    <div class="search-container">
+      <input class="search-bar" type="text" v-model="search" placeholder="Search..." />
+    </div>
+    <pv-data-table :value="filteredContracts">
+      <pv-column v-for="col in columns" :key="col.field" :field="col.field" :header="col.header"></pv-column>
+      <pv-column header="">
+        <template #body="slotProps">
+          <pv-button label="View" @click="viewContract(slotProps.data)"></pv-button>
+        </template>
+      </pv-column>
+    </pv-data-table>
+  </div>
+</template>
+
+
 
 <style scoped>
 .search-bar {

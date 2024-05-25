@@ -1,8 +1,10 @@
 <script>
+
 export default {
   name: "app-menu",
   data() {
     return {
+      searchQuery: '',
       items: [
         {
           separator: true
@@ -25,6 +27,8 @@ export default {
             {
               label: 'Search',
               icon: 'pi pi-search',
+              component: 'InputText',
+              model: this.searchQuery
             }
           ]
         },
@@ -46,7 +50,7 @@ export default {
         }
       ]
     };
-  }
+  },
 };
 </script>
 
@@ -64,7 +68,10 @@ export default {
         <span class="text-primary font-bold">{{ item.label }}</span>
       </template>
       <template #item="{ item, props }">
-        <a v-ripple class="flex align-items-center" v-bind="props.action">
+        <div v-if="item.component === 'InputText'" class="flex align-items-center w-full">
+          <pv-input-text v-model="searchQuery" placeholder="Search..." class="w-full" />
+        </div>
+        <a v-else v-ripple class="flex align-items-center" v-bind="props.action">
           <span :class="item.icon" />
           <span class="ml-2">{{ item.label }}</span>
           <pv-badge v-if="item.badge" class="ml-auto" :value="item.badge" />

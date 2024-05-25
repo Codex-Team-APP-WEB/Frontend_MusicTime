@@ -1,7 +1,7 @@
 <script>
 import { MusicianApiService } from "../services/musician-api.service.js";
 export default {
-  components: {},
+  props: ['term'],
   data() {
     return {
       value: {}, // Inicializa value como un objeto vacío
@@ -9,7 +9,14 @@ export default {
       musicianService: new MusicianApiService()
     };
   },
-
+  computed: {
+    filteredMusicians() {
+      if (!this.term) {
+        return this.musician;
+      }
+      return this.musician.filter(musician => musician.name.includes(this.term));
+    }
+  },
   mounted() {
     this.musicianService.getAll().then(response => {
       this.musician = response.data;
@@ -26,12 +33,12 @@ export default {
 <template>
 
   <div>
-    <div v-if="musician.length > 0">
-      <div v-for="musician in musician" :key="musician.id">
+    <div v-if="filteredMusicians.length > 0">
+      <div v-for="musician in filteredMusicians" :key="musician.id">
         <pv-card style="margin-bottom: 20px;">
           <template #header>
             <div class="template-header">
-            <img :src="musician.image" alt="musician.name" style="width: 60%; height: 400px; object-fit: cover;" />
+              <img :src="musician.image" alt="musician.name" style="width: 60%; height: 400px; object-fit: cover;" />
             </div>
           </template>
           <template #title>
@@ -45,10 +52,10 @@ export default {
               <router-link :to="`/musician/${musician.id}`">
                 <pv-button label="View profile" plain text />
               </router-link>
-            <div class = "rating">
-              <pv-rating v-model="value[musician.id]" /> <!-- Utiliza value[musician.id] como el modelo para pv-rating -->
-            </div>
+              <div class = "rating">
+                <pv-rating v-model="value[musician.id]" /> <!-- Utiliza value[musician.id] como el modelo para pv-rating -->
               </div>
+            </div>
           </template>
         </pv-card>
       </div>
