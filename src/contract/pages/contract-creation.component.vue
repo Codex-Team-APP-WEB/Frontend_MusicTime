@@ -150,6 +150,7 @@ export default {
       </pv-accordion-tab>
     </pv-accordion>
   </div>
+  <pv-button>Send Contract</pv-button>
 </template>
 
 <style scoped>

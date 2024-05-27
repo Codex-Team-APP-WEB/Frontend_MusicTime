@@ -11,6 +11,9 @@ import ContractCreationComponent from "../contract/pages/contract-creation.compo
 import RegisterViewComponent from "../profiles/pages/register-view.component.vue";
 import LoginViewComponent from "../profiles/pages/login-view.component.vue";
 import PageNotFoundComponent from "../public/pages/page-not-found.component.vue";
+import CostumerEditProfileComponent from "../profiles/pages/costumer-edit-profile.component.vue";
+import MusicEditProfileComponent from "../profiles/pages/music-edit-profile.component.vue";
+import EnterpriseEditProfileComponent from "../profiles/pages/enterprise-edit-profile.component.vue";
 
 
 const router = createRouter({
@@ -22,6 +25,9 @@ const router = createRouter({
         { path: "/",        redirect: "/home"},
         { path: '/subscription', component: subscriptionManagementComponent, meta: { title: 'Subscription' } },
         { path: '/contract-panel', component: ContractPanelComponent, meta: { title: 'Contract Panel' } },
+        { path: '/costumer-edit', name: 'costumer-edit-profile', component: CostumerEditProfileComponent, meta: { title: 'Costumer Edit Profile' } },
+        { path: '/music-edit', name: 'music-edit-profile', component: MusicEditProfileComponent, meta: { title: 'Music Edit Profile' } },
+        { path: '/enterprise-edit', name: 'enterprise-edit-profile', component: EnterpriseEditProfileComponent, meta: { title: 'Enterprise Edit Profile' } },
 
         //Path con boton no es de toolbar
         { path: '/musician/:id', component: Musician, meta: { title: 'Musician' }, props: true },

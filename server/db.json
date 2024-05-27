@@ -88,37 +88,44 @@
     }
   ],
   "contracts": [
-    { "id": 1,
+    {
+      "id": 1,
       "name": "Pedro Castillo",
       "status": "Activo",
       "date": "2024-06-20"
     },
-    { "id": 2,
+    {
+      "id": 2,
       "name": "Luis Perez",
       "status": "Pendiente",
       "date": "2024-06-15"
     },
-    { "id": 3,
+    {
+      "id": 3,
       "name": "Ronald Campos",
       "status": "Activo",
       "date": "2024-06-16"
     },
-    { "id": 4,
+    {
+      "id": 4,
       "name": "Juan Mana",
       "status": "Pendiente",
       "date": "2024-06-20"
     },
-    { "id": 5,
+    {
+      "id": 5,
       "name": "Carlos Pingus",
       "status": "Activo",
       "date": "2024-06-21"
     },
-    { "id": 6,
+    {
+      "id": 6,
       "name": "DJ Peligro",
       "status": "Pendiente",
       "date": "2024-06-22"
     },
-    { "id": 7,
+    {
+      "id": 7,
       "name": "Francis Wisdow",
       "status": "Activo",
       "date": "2024-06-25"
@@ -142,13 +149,28 @@
       "id": 1,
       "name": "Pedro",
       "surname": "Perez Perez",
+      "image": "https://res.cloudinary.com/drkelnilg/image/upload/v1716864043/imagen_2024-05-27_214042159_ligdsu.png",
       "points": "5",
       "comment": "Excelente servicio",
       "date": "2024-06-20",
       "musician": "Grupo 5",
       "musicianId": "1",
       "profileId": "1"
+    },
+    {
+      "name": "Victor Raul",
+      "comment": "muy buena presentacion",
+      "points": 4,
+      "id": 2
+    }
+  ],
+  "enterprise": [
+    {
+      "id": 1,
+      "name": "MusicBusiness",
+      "type": "Bar",
+      "address": "Av. Los Incas 123",
+      "profileId": "1"
     }
   ]
 }
-

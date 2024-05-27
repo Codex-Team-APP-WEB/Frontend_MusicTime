@@ -1,8 +1,12 @@
 <script>
 import { MusicianApiService } from "../../profiles/services/musician-api.service.js";
+import FeedbackProfile from "../../feedback/components/feedback-profile.component.vue";
+
 export default {
   name: "musician",
-  components: {},
+  components: {
+    FeedbackProfile
+  },
   data() {
     return {
       musician: null,
@@ -27,7 +31,7 @@ export default {
       <pv-card style="margin-bottom: 20px;">
         <template #header>
           <div class="template-header">
-            <img :src="musician.image" alt="musician.name" style="width: 60%; height: 400px; object-fit: cover;" />
+            <img :src="musician.image" alt="musician.name" style="width: 60%; height: 400px; object-fit: cover;"/>
           </div>
         </template>
         <template #title>
@@ -38,10 +42,11 @@ export default {
         </template>
         <template #footer>
           <router-link :to="`/contract/${musician.id}`">
-            <pv-button label="Hire" plain text />
+            <pv-button label="Hire" plain text/>
           </router-link>
         </template>
       </pv-card>
+      <FeedbackProfile/>
     </div>
     <div v-else>
       <p>Loading...</p>
