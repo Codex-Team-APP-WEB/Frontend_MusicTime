@@ -1,7 +1,15 @@
 <script>
+import { ref } from 'vue';
+import {useRouter} from "vue-router";
 
 export default {
   name: "app-menu",
+  setup() {
+    const router = useRouter();
+    return {
+      router,
+    };
+  },
   data() {
     return {
       searchQuery: '',
@@ -24,20 +32,25 @@ export default {
               label: 'Good Score',
               icon: 'pi pi-crown',
             },
-            {
-              label: 'Search',
-              icon: 'pi pi-search',
-              component: 'InputText',
-              model: this.searchQuery
-            }
           ]
         },
         {
           label: 'Profile',
           items: [
             {
-              label: 'Settings',
+              label: 'SettingsCos',
               icon: 'pi pi-cog',
+              command: () => this.handleSettingsClick()
+            },
+            {
+              label: 'SettingsMus',
+              icon: 'pi pi-cog',
+              command: () => this.handleSettingsClickMu()
+            },
+            {
+              label: 'SettingsEnt',
+              icon: 'pi pi-cog',
+              command: () => this.handleSettingsClickEnt()
             },
             {
               label: 'Logout',
@@ -48,9 +61,32 @@ export default {
         {
           separator: true
         }
-      ]
+      ],
+      filteredItems: [],
     };
   },
+  watch: {
+    searchQuery(newVal) {
+      this.performSearch(newVal);
+    }
+  },
+  methods: {
+    performSearch(query) {
+      this.filteredItems = this.items.filter(item => item.label.includes(query));
+    },
+    handleSettingsClick() {
+      this.router.push({ name: 'costumer-edit-profile' });
+    },
+    handleSettingsClickMu() {
+      this.router.push({ name: 'music-edit-profile' });
+    },
+    handleSettingsClickEnt() {
+      this.router.push({ name: 'enterprise-edit-profile' });
+    },
+  },
+  created() {
+    this.filteredItems = this.items;
+  }
 };
 </script>
 
@@ -66,17 +102,6 @@ export default {
       </template>
       <template #submenuheader="{ item }">
         <span class="text-primary font-bold">{{ item.label }}</span>
-      </template>
-      <template #item="{ item, props }">
-        <div v-if="item.component === 'InputText'" class="flex align-items-center w-full">
-          <pv-input-text v-model="searchQuery" placeholder="Search..." class="w-full" />
-        </div>
-        <a v-else v-ripple class="flex align-items-center" v-bind="props.action">
-          <span :class="item.icon" />
-          <span class="ml-2">{{ item.label }}</span>
-          <pv-badge v-if="item.badge" class="ml-auto" :value="item.badge" />
-          <span v-if="item.shortcut" class="ml-auto border-1 surface-border border-round surface-100 text-xs p-1">{{ item.shortcut }}</span>
-        </a>
       </template>
       <template #end>
         <pv-button v-ripple class="relative overflow-hidden w-full p-link flex align-items-center p-2 pl-3 text-color hover:surface-200 border-noround">
