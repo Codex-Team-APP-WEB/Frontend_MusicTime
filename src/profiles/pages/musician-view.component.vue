@@ -1,6 +1,8 @@
 <script>
 import { MusicianApiService } from "../services/musician-api.service.js";
+import AppMenu from "../../public/components/menu.component.vue";
 export default {
+  components: {AppMenu},
   props: ['term'],
   data() {
     return {
@@ -34,30 +36,36 @@ export default {
 
   <div>
     <div v-if="filteredMusicians.length > 0">
-      <div v-for="musician in filteredMusicians" :key="musician.id">
-        <pv-card style="margin-bottom: 20px;">
-          <template #header>
-            <div class="template-header">
-              <img :src="musician.image" alt="musician.name" style="width: 60%; height: 400px; object-fit: cover;" />
-            </div>
-          </template>
-          <template #title>
-            <span><strong>Name:</strong> {{ musician.name }}</span>
-          </template>
-          <template #content>
-            <p><strong>Description:</strong> {{ musician.description }}</p>
-          </template>
-          <template #footer>
-            <div class="flex gap-3 mt-1">
-              <router-link :to="`/musician/${musician.id}`">
-                <pv-button label="View profile" plain text />
-              </router-link>
-              <div class = "rating">
-                <pv-rating v-model="value[musician.id]" /> <!-- Utiliza value[musician.id] como el modelo para pv-rating -->
-              </div>
-            </div>
-          </template>
-        </pv-card>
+
+      <div class="flex-container">
+        <appMenu />
+        <div class="card-container">
+          <div v-for="musician in filteredMusicians" :key="musician.id">
+            <pv-card style="margin-bottom: 20px;">
+              <template #header>
+                <div class="template-header">
+                  <img :src="musician.image" alt="musician.name" style="width: 60%; height: 400px; object-fit: cover;" />
+                </div>
+              </template>
+              <template #title>
+                <span><strong>Name:</strong> {{ musician.name }}</span>
+              </template>
+              <template #content>
+                <p><strong>Description:</strong> {{ musician.description }}</p>
+              </template>
+              <template #footer>
+                <div class="flex gap-3 mt-1">
+                  <router-link :to="`/musician/${musician.id}`">
+                    <pv-button label="View profile" plain text />
+                  </router-link>
+                  <div class = "rating">
+                    <pv-rating v-model="value[musician.id]" /> <!-- Utiliza value[musician.id] como el modelo para pv-rating -->
+                  </div>
+                </div>
+              </template>
+            </pv-card>
+          </div>
+        </div>
       </div>
     </div>
     <div v-else>
@@ -78,5 +86,17 @@ export default {
   justify-content: center;
   align-items: center;
   border-radius: 30%;
+}
+
+.flex-container {
+  display: flex;
+  flex-direction: row;
+}
+
+.card-container {
+  /* Ajusta estos valores según tus necesidades */
+
+  width: 100%;
+  padding-left: 15px;
 }
 </style>

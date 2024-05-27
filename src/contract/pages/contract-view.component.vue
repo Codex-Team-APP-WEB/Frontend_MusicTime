@@ -1,7 +1,5 @@
 <script>
 import html2pdf from 'html2pdf.js'
-
-
 export default {
   name: "contract-view",
   components: {},
@@ -76,6 +74,10 @@ export default {
   </div>
 </div>
 <pv-button @click="exportToPdf" label="Export to PDF" />
+
+  <div>
+    <p><strong>Nota:</strong> Para validez legal se solicita la firma de ambas partes frente al documento generado por la plataforma MusicTime.</p>
+  </div>
 </template>
 
 <style scoped>

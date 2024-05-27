@@ -13,7 +13,6 @@ export default {
   <Toolbar />
   <div class="margin">
     <div class="flex-container">
-      <appMenu />
       <div class="card-container">
       <router-view />
       </div>

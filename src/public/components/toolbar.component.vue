@@ -46,16 +46,22 @@ export default {
           <pv-button label="Subscription" plain text />
         </router-link>
 
+        <router-link to="/contract-panel">
+          <pv-button label="Contract Panel" plain text />
+        </router-link>
+
 
       </div>
-
+      <router-link to="/login">
       <div class="flex align-items-center gap-2">
         <pv-button class="button-margin" label="Login" severity="contrast" size="small" />
       </div>
-
+      </router-link>
+      <router-link to="/register">
       <div class="flex align-items-center gap-2">
         <pv-button class="button-margin" label="Sign up" severity="contrast" size="small" />
       </div>
+      </router-link>
     </template>
   </pv-toolbar>
   </div>

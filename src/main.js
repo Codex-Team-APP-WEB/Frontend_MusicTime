@@ -48,6 +48,12 @@ import Badge from "primevue/badge";
 import Image from "primevue/image";
 import Accordion from "primevue/accordion";
 import AccordionTab from "primevue/accordiontab";
+import TabView from "primevue/tabview";
+import TabPanel from "primevue/tabpanel";
+import Stepper from "primevue/stepper";
+import StepperPanel from "primevue/stepperpanel";
+import Password from "primevue/password";
+import ToggleButton from "primevue/togglebutton";
 import DataViewLayoutOptions from 'primevue/dataviewlayoutoptions'   // optional
 import router from "./router/index.js";
 
@@ -87,5 +93,11 @@ createApp(App)
     .component('pv-image', Image)
     .component('pv-accordion', Accordion)
     .component('pv-accordion-tab', AccordionTab)
+    .component('pv-tab-view', TabView)
+    .component('pv-tab-panel', TabPanel)
+    .component('pv-stepper', Stepper)
+    .component('pv-stepper-panel', StepperPanel)
+    .component('pv-password', Password)
+    .component('pv-toggle-button', ToggleButton)
     .mount('#app')
 
