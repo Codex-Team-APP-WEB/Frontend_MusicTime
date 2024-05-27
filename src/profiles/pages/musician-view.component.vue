@@ -69,7 +69,10 @@ export default {
       </div>
     </div>
     <div v-else>
-      <p>Loading...</p>
+      <div class="center">
+        <h2>No musicians found</h2>
+      <img src="https://res.cloudinary.com/djia8bsvr/image/upload/v1716827588/red-en-la-nube_nlt7ys.gif" alt="My Image" class = "logo" />
+      </div>
     </div>
   </div>
 
@@ -94,9 +97,18 @@ export default {
 }
 
 .card-container {
-  /* Ajusta estos valores según tus necesidades */
-
   width: 100%;
   padding-left: 15px;
+}
+.logo {
+  width: 100px;
+}
+
+.center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  height: 80vh;
 }
 </style>

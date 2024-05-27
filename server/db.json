@@ -130,10 +130,24 @@
       "name": "Pedro",
       "surname": "Perez Perez",
       "phone": "987654321",
+      "dni": "12345678",
       "email": "prueba12345@gmail.com",
       "password": "123456",
       "plan": "Basic",
       "planId": "0"
+    }
+  ],
+  "feedback": [
+    {
+      "id": 1,
+      "name": "Pedro",
+      "surname": "Perez Perez",
+      "points": "5",
+      "comment": "Excelente servicio",
+      "date": "2024-06-20",
+      "musician": "Grupo 5",
+      "musicianId": "1",
+      "profileId": "1"
     }
   ]
 }

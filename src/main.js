@@ -54,6 +54,9 @@ import Stepper from "primevue/stepper";
 import StepperPanel from "primevue/stepperpanel";
 import Password from "primevue/password";
 import ToggleButton from "primevue/togglebutton";
+import InputGroup from "primevue/inputgroup";
+import InputGroupAddon from "primevue/inputgroupaddon";
+import Calendar from "primevue/calendar";
 import DataViewLayoutOptions from 'primevue/dataviewlayoutoptions'   // optional
 import router from "./router/index.js";
 
@@ -99,5 +102,8 @@ createApp(App)
     .component('pv-stepper-panel', StepperPanel)
     .component('pv-password', Password)
     .component('pv-toggle-button', ToggleButton)
+    .component('pv-input-group', InputGroup)
+    .component('pv-input-group-addon', InputGroupAddon)
+    .component('pv-calendar', Calendar)
     .mount('#app')
 
