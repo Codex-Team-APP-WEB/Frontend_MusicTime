@@ -6,8 +6,10 @@
         <div>
           <p>Name:</p>
           <pv-input-text id="name" v-model="newFeedback.name" required class="long-input" />
-          <p>comment:</p>
-          <pv-input-text id="comment" v-model="newFeedback.comment" required class="long-input tall-input" />
+          <div>
+            <p>comment:</p>
+            <pv-textarea id="comment" v-model="newFeedback.comment" required class="long-input tall-input"></pv-textarea>
+          </div>
         </div>
         <div class="points-input">
           <p>Points:</p>
@@ -17,7 +19,7 @@
 
       <pv-button type="submit" label="Submit" />
     </form>
-    <pv-accordion :activeIndex="0" expandIcon="pi pi-plus" collapseIcon="pi pi-minus">
+    <pv-accordion :multiple="true" expandIcon="pi pi-plus" collapseIcon="pi pi-minus">
       <pv-accordion-tab v-for="feedback in feedbackData" :key="feedback.id">
         <template #header>
           <span class="flex align-items-center gap-2 w-full">
@@ -32,6 +34,12 @@
         <p class="m-0">
           {{ feedback.comment }}
         </p>
+        <div class="justify-end items-center">
+          <pv-button icon="pi pi-thumbs-up" class="p-button-rounded p-button-success p-button-outlined" @click="likeFeedback(feedback)" />
+          <pv-badge :value="feedback.likes" />
+          <pv-button icon="pi pi-thumbs-down" class="p-button-rounded p-button-danger p-button-outlined" @click="dislikeFeedback(feedback)" />
+          <pv-badge :value="feedback.dislikes" />
+        </div>
       </pv-accordion-tab>
     </pv-accordion>
   </div>
@@ -63,6 +71,11 @@ export default {
           });
     },
     submitFeedback() {
+      if (this.newFeedback.points > 5) {
+        alert('Points cannot exceed 5');
+        return;
+      }
+
       this.feedbackService.create(this.newFeedback)
           .then(response => {
             this.feedbackData.push(response.data);
@@ -80,7 +93,22 @@ export default {
           .catch(error => {
             console.log(error);
           });
-    }
+    },
+    likeFeedback(feedback) {
+      feedback.likes=1;
+      this.updateFeedback(feedback);
+    },
+    dislikeFeedback(feedback) {
+      feedback.dislikes=1;
+      this.updateFeedback(feedback);
+    },
+    updateFeedback(feedback) {
+      this.feedbackService.update(feedback.id, feedback)
+          .catch(error => {
+            console.log(error);
+          });
+    },
+
   },
   created() {
     this.fetchFeedback();
@@ -99,6 +127,12 @@ export default {
 
 .points-input {
   margin-right: 400px;
+}
+
+textarea {
+  width: 800px;
+  height: 100px;
+  resize: none;
 }
 
 </style>
