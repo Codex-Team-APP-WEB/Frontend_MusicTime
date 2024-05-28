@@ -46,4 +46,10 @@ const router = createRouter({
     ]
 });
 
+router.beforeEach((to, from, next) => {
+    let baseTitle = 'MusicTime';
+    document.title = `${ baseTitle } | ${ to.meta["title"]}`;
+    next();
+});
+
 export default router;
