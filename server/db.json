@@ -172,5 +172,14 @@
       "address": "Av. Los Incas 123",
       "profileId": "1"
     }
+  ],
+  "enterprise": [
+    {
+      "id": 1,
+      "name": "MusicBusiness",
+      "type": "Bar",
+      "address": "Av. Los Incas 123",
+      "profileId": "1"
+    }
   ]
 }
