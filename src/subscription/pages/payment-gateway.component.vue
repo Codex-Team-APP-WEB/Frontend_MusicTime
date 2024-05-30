@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1>Payment Gateway</h1>
+    <h1>Payment gateway</h1>
     <pv-card>
       <template #title>
         <div class="card-title">
@@ -11,20 +11,20 @@
       </template>
       <template #content>
         <form ref="paymentForm" @submit.prevent="submitPayment">
-          <div class="p-field">
-            <label for="name">Full name</label>
-            <pv-input-text id="cardName" v-model="cardName" @input="validateCardName" required />
+          <div class="field">
+            <label for="cardName">Full name</label>
+            <pv-input-text id="cardName" v-model="cardName" @input="validateCardName" required class="half-width-input"/>
           </div>
-          <div class="p-field">
-            <label for="cardNumber">Card Number</label>
-            <pv-input-text id="cardNumber" v-model="cardNumber" @input="validateCardNumber" required />
+          <div class="field">
+            <label for="cardNumber">Card number</label>
+            <pv-input-text id="cardNumber" v-model="cardNumber" v-the-mask="'####-####-####-####'" @input="validateCardNumber" required class="half-width-input"/>
           </div>
-          <div class="p-field flex-field">
-            <div>
-              <label for="expiryDate">Expiry Date</label>
-              <pv-input-text id="expiryDate" v-model="expiryDate" @input="validateExpiryDate" required />
+          <div class="flex-field">
+            <div class="field">
+              <label for="expiryDate">Expiry date</label>
+              <pv-calendar id="birthdate" v-model="expiryDate" dateFormat="mm/yy"/>
             </div>
-            <div>
+            <div class="field cvv-field">
               <label for="cvv">CVV</label>
               <pv-input-text id="cvv" v-model="cvv" @input="validateCvv" required />
             </div>
@@ -48,6 +48,7 @@
 import { ref, computed } from 'vue';
 import { required, helpers } from '@vuelidate/validators'
 import { useVuelidate } from '@vuelidate/core'
+import { TheMask } from 'vue-the-mask'
 
 const isNumeric = value => /^\d+$/.test(value)
 export default {
@@ -58,6 +59,9 @@ export default {
       expiryDate: '',
       cvv: '',
     };
+  },
+  directives:{
+    'the-mask': TheMask
   },
   validations() {
     return {
@@ -102,14 +106,29 @@ export default {
 }
 
 .card-icon {
-  margin-left: 500px;
-  margin-right: -480px;
+  margin-left: 20px;
   width: 40px;
   height: 40px;
 }
+
+
+.field label {
+  width: 150px;
+  margin-right: 0.2em;
+}
+
 .flex-field {
   display: flex;
-  justify-content: flex-start;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.half-width-input {
+  width: 48.5%;
+}
+
+.cvv-field {
+  margin-right: 600px;
 }
 
 </style>
