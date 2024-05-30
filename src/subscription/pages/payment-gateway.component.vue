@@ -1,7 +1,7 @@
 <template>
-  <div>
-    <h1>Payment Gateway</h1>
-    <pv-card>
+  <div class="container">
+    <h1>Payment gateway</h1>
+    <pv-card class="payment-card">
       <template #title>
         <div class="card-title">
           <h4>Credit or debit card</h4>
@@ -11,29 +11,29 @@
       </template>
       <template #content>
         <form ref="paymentForm" @submit.prevent="submitPayment">
-          <div class="p-field">
-            <label for="name">Full name</label>
-            <pv-input-text id="cardName" v-model="cardName" @input="validateCardName" required />
+          <div class="field">
+            <label for="cardName">Full name</label>
+            <pv-input-text id="cardName" v-model="cardName" @input="validateCardName" required class="full-width-input"/>
           </div>
-          <div class="p-field">
-            <label for="cardNumber">Card Number</label>
-            <pv-input-text id="cardNumber" v-model="cardNumber" @input="validateCardNumber" required />
+          <div class="field">
+            <label for="cardNumber">Card number</label>
+            <pv-input-text id="cardNumber" v-model="cardNumber" @input="validateCardNumber" required class="full-width-input"/>
           </div>
-          <div class="p-field flex-field">
-            <div>
-              <label for="expiryDate">Expiry Date</label>
-              <pv-input-text id="expiryDate" v-model="expiryDate" @input="validateExpiryDate" required />
+          <div class="field flex-field">
+            <div class="expiry-field">
+              <label for="expiryDate">Expiry date</label>
+              <pv-calendar id="expiryDate" v-model="expiryDate" dateFormat="mm/yy" class="half-width-input"/>
             </div>
-            <div>
+            <div class="cvv-field">
               <label for="cvv">CVV</label>
-              <pv-input-text id="cvv" v-model="cvv" @input="validateCvv" required />
+              <pv-input-text id="cvv" v-model="cvv" @input="validateCvv" required class="cvv-input"/>
             </div>
           </div>
           <pv-button label="Pay" :disabled="!isFormValid" @click="checkFormValidity" />
         </form>
       </template>
     </pv-card>
-    <pv-card>
+    <pv-card class="payment-card">
       <template #title>
         <h2>QR YAPE</h2>
       </template>
@@ -46,10 +46,10 @@
 
 <script>
 import { ref, computed } from 'vue';
-import { required, helpers } from '@vuelidate/validators'
-import { useVuelidate } from '@vuelidate/core'
+import { required, helpers } from '@vuelidate/validators';
+import { useVuelidate } from '@vuelidate/core';
 
-const isNumeric = value => /^\d+$/.test(value)
+const isNumeric = value => /^\d+$/.test(value);
 export default {
   data() {
     return {
@@ -64,52 +64,83 @@ export default {
       cardNumber: { required, numeric: helpers.withMessage('Debe ser numérico', isNumeric) },
       expiryDate: { required, numeric: helpers.withMessage('Debe ser numérico', isNumeric) },
       cvv: { required, numeric: helpers.withMessage('Debe ser numérico', isNumeric) },
-    }
+    };
   },
   setup() {
-    const v$ = useVuelidate()
-    const isFormValid = computed(() => v$.value.cardNumber.$model && v$.value.expiryDate.$model && v$.value.cvv.$model)
+    const v$ = useVuelidate();
+    const isFormValid = computed(() => v$.value.cardNumber.$model && v$.value.expiryDate.$model && v$.value.cvv.$model);
     const checkFormValidity = () => {
-      v$.$validate()
+      v$.$validate();
       if (!isFormValid.value) {
         alert('Por favor, completa todos los campos con datos numéricos.');
       }
-    }
-    return {v$, isFormValid, checkFormValidity}
+    };
+    return { v$, isFormValid, checkFormValidity };
   },
   methods: {
     validateCardNumber() {
-      this.cardNumber = this.cardNumber.replace(/\D/g, '')
+      this.cardNumber = this.cardNumber.replace(/\D/g, '');
     },
     validateExpiryDate() {
-      this.expiryDate = this.expiryDate.replace(/\D/g, '')
+      this.expiryDate = this.expiryDate.replace(/\D/g, '');
     },
     validateCvv() {
-      this.cvv = this.cvv.replace(/\D/g, '')
+      this.cvv = this.cvv.replace(/\D/g, '');
     },
   },
 };
 </script>
 
 <style scoped>
-.qr-code {
-  width: 200px;
-  height: 200px;
+.container {
+  max-width: 600px;
+  margin: 0 auto;
 }
+
+
+.payment-card {
+  margin-top: 20px;
+}
+
 .card-title {
   display: flex;
   align-items: center;
+  justify-content: space-between;
 }
 
 .card-icon {
-  margin-left: 500px;
-  margin-right: -480px;
   width: 40px;
   height: 40px;
 }
-.flex-field {
-  display: flex;
-  justify-content: flex-start;
+
+
+.field label {
+  display: block;
+  margin-bottom: 0.5em;
 }
 
+.full-width-input {
+  width: 100%;
+}
+
+.flex-field {
+  display: flex;
+  justify-content: space-between;
+}
+
+.expiry-field,
+.cvv-field {
+  width: 48%;
+}
+
+.cvv-input {
+  width: 60px;
+}
+
+.qr-code {
+  width: 200px;
+  height: 200px;
+  display: block;
+  margin: 0 auto;
+}
 </style>
