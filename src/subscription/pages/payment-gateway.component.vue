@@ -13,32 +13,26 @@
         <form ref="paymentForm" @submit.prevent="submitPayment">
           <div class="field">
             <label for="cardName">Full name</label>
-            <pv-input-text id="cardName" v-model="cardName" @input="validateCardName" required class="full-width-input"/>
+            <pv-input-text id="cardName" v-model="cardName" @input="validateCardName" required class="full-width-input" placeholder="Enter your full name"/>
           </div>
           <div class="field">
             <label for="cardNumber">Card number</label>
-            <pv-input-text id="cardNumber" v-model="cardNumber" @input="validateCardNumber" required class="full-width-input"/>
+            <pv-input-text id="cardNumber" v-model="cardNumber" @input="validateCardNumber" required class="full-width-input" placeholder="0000 0000 0000 0000"/>
           </div>
           <div class="field flex-field">
             <div class="expiry-field">
               <label for="expiryDate">Expiry date</label>
-              <pv-calendar id="expiryDate" v-model="expiryDate" dateFormat="mm/yy" class="half-width-input"/>
+              <pv-calendar id="expiryDate" v-model="expiryDate" dateFormat="mm/yy" class="half-width-input" placeholder="01/23"/>
             </div>
             <div class="cvv-field">
               <label for="cvv">CVV</label>
-              <pv-input-text id="cvv" v-model="cvv" @input="validateCvv" required class="cvv-input"/>
+              <pv-input-text id="cvv" v-model="cvv" @input="validateCvv" required class="cvv-input" placeholder="CVV"/>
             </div>
           </div>
-          <pv-button label="Pay" :disabled="!isFormValid" @click="checkFormValidity" />
+          <div class="pay-button-container">
+            <pv-button class="pay-button" label="Pay" :disabled="!isFormValid" @click="checkFormValidity" />
+          </div>
         </form>
-      </template>
-    </pv-card>
-    <pv-card class="payment-card">
-      <template #title>
-        <h2>QR YAPE</h2>
-      </template>
-      <template #content>
-        <img src="https://res.cloudinary.com/drkelnilg/image/upload/v1716519397/imagen_2024-05-23_215633704_ktvbmi.png" @click="scanQR" alt="Scan QR Code" class="qr-code" />
       </template>
     </pv-card>
   </div>
@@ -96,10 +90,9 @@ export default {
   max-width: 600px;
   margin: 0 auto;
 }
-
-
 .payment-card {
   margin-top: 20px;
+  background-color: #f9f9f9;
 }
 
 .card-title {
@@ -112,7 +105,6 @@ export default {
   width: 40px;
   height: 40px;
 }
-
 
 .field label {
   display: block;
@@ -134,13 +126,18 @@ export default {
 }
 
 .cvv-input {
-  width: 60px;
+  width: 70px;
 }
 
-.qr-code {
+.pay-button-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+.pay-button {
+  font-size: 20px;
+  padding: 15px 30px;
   width: 200px;
-  height: 200px;
-  display: block;
-  margin: 0 auto;
+  height: 60px;
 }
 </style>

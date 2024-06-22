@@ -12,11 +12,13 @@
           </div>
         </div>
         <div class="points-input">
-          <p>Points:</p>
-          <pv-input-number id="points" v-model="newFeedback.points" required />
+          <p>Qualification:</p>
+          <div>
+            <pv-rating v-model="starRating" :stars="5" :cancel="false"></pv-rating>
+            <span class="average-rating">({{ calculateAverageRating() }})</span>
+          </div>
         </div>
       </div>
-
       <pv-button type="submit" label="Submit" />
     </form>
     <pv-accordion :multiple="true" expandIcon="pi pi-plus" collapseIcon="pi pi-minus">
@@ -25,6 +27,9 @@
           <span class="flex align-items-center gap-2 w-full">
             <pv-avatar :image="feedback.image" shape="circle" />
             <span class="font-bold white-space-nowrap">{{ feedback.name }} {{ feedback.surname }}</span>
+            <div>
+              <pv-rating :modelValue="feedback.points" :stars="5" :readonly="true"></pv-rating>
+            </div>
             <pv-badge :value="feedback.points" class="ml-auto mr-2" />
             <pv-button class="p-button-rounded p-button-danger p-button-outlined" @click="deleteFeedback(feedback.id)">
               <i class="pi pi-trash"></i>
@@ -34,19 +39,21 @@
         <p class="m-0">
           {{ feedback.comment }}
         </p>
+
         <div class="justify-end items-center">
           <pv-button icon="pi pi-thumbs-up" class="p-button-rounded p-button-success p-button-outlined" @click="likeFeedback(feedback)" />
           <pv-badge :value="feedback.likes" />
           <pv-button icon="pi pi-thumbs-down" class="p-button-rounded p-button-danger p-button-outlined" @click="dislikeFeedback(feedback)" />
           <pv-badge :value="feedback.dislikes" />
         </div>
+
       </pv-accordion-tab>
     </pv-accordion>
   </div>
 </template>
 
 <script>
-import { FeedbackApiService } from '../services/feedback-api.service';
+import {FeedbackApiService} from '../services/feedback-api.service';
 
 export default {
   data() {
@@ -56,8 +63,9 @@ export default {
       newFeedback: {
         name: '',
         comment: '',
-        points: ''
-      }
+        points: 0
+      },
+      starRating: 0
     };
   },
   methods: {
@@ -71,15 +79,18 @@ export default {
           });
     },
     submitFeedback() {
-      if (this.newFeedback.points > 5) {
+      if (this.starRating > 5) {
         alert('Points cannot exceed 5');
         return;
       }
 
+      this.newFeedback.points = this.starRating;
+
       this.feedbackService.create(this.newFeedback)
           .then(response => {
             this.feedbackData.push(response.data);
-            this.newFeedback = { name: '', comment: '', points: '' };
+            this.newFeedback = {name: '', comment: '', points: 0};
+            this.starRating = 0;
           })
           .catch(error => {
             console.log(error);
@@ -95,11 +106,11 @@ export default {
           });
     },
     likeFeedback(feedback) {
-      feedback.likes=1;
+      feedback.likes = 1;
       this.updateFeedback(feedback);
     },
     dislikeFeedback(feedback) {
-      feedback.dislikes=1;
+      feedback.dislikes = 1;
       this.updateFeedback(feedback);
     },
     updateFeedback(feedback) {
@@ -108,7 +119,13 @@ export default {
             console.log(error);
           });
     },
-
+    calculateAverageRating() {
+      if (this.feedbackData.length === 0) {
+        return 0;
+      }
+      const total = this.feedbackData.reduce((sum, feedback) => sum + Number(feedback.points), 0);
+      return (total / this.feedbackData.length).toFixed(2);
+    }
   },
   created() {
     this.fetchFeedback();
@@ -117,6 +134,8 @@ export default {
 </script>
 
 <style scoped>
+
+
 .long-input {
   width: 800px;
 }
