@@ -40,6 +40,7 @@
 
 <script>
 import { ref, computed } from 'vue';
+import { useRouter } from 'vue-router'; // Importa useRouter
 import { required, helpers } from '@vuelidate/validators';
 import { useVuelidate } from '@vuelidate/core';
 
@@ -62,11 +63,13 @@ export default {
   },
   setup() {
     const v$ = useVuelidate();
-    const isFormValid = computed(() => v$.value.cardNumber.$model && v$.value.expiryDate.$model && v$.value.cvv.$model);
+    const router = useRouter(); // Utiliza useRouter
+    const isFormValid = computed(() => !v$.value.$error); // Comprueba si hay errores
     const checkFormValidity = () => {
-      v$.$validate();
       if (!isFormValid.value) {
         alert('Por favor, completa todos los campos con datos numéricos.');
+      } else {
+        router.push('/create-musician'); // Navega a la página de creación de perfil de músico
       }
     };
     return { v$, isFormValid, checkFormValidity };

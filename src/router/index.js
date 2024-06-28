@@ -15,6 +15,7 @@ import EnterpriseEditProfileComponent from "../profiles/pages/enterprise-edit-pr
 import SignInComponent from "../IAM/pages/sign-in.component.vue";
 import SignUpComponent from "../IAM/pages/sign-up.component.vue";
 import {authenticationGuard} from "../IAM/services/authentication.guard.js";
+import CreateMusicianComponent from "../musician/pages/create-musician-profile.component.vue";
 
 
 const router = createRouter({
@@ -37,7 +38,7 @@ const router = createRouter({
         { path: '/contract-view/:id', component: ContractViewComponent, meta: { title: 'Contract View' }  },
         { path: '/sign-in', name: 'sign-in',    component: SignInComponent,             meta: { title: 'Sign In' } },
         { path: '/sign-up', name: 'sign-up',    component: SignUpComponent,             meta: { title: 'Sign Up' } },
-
+        {path: '/create-musician', component: CreateMusicianComponent, meta: { title: 'Create Musician' }},
 
         //Path page not found
         {path: '/:pathMatch(.*)*', name: 'not-found', component: PageNotFoundComponent }
