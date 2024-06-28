@@ -1,5 +1,4 @@
 <script>
-import { ref } from 'vue';
 import {useRouter} from "vue-router";
 
 export default {
@@ -75,7 +74,7 @@ export default {
       this.filteredItems = this.items.filter(item => item.label.includes(query));
     },
     handleSettingsClick() {
-      this.router.push({ name: 'costumer-edit-profile' });
+      this.router.push({ name: 'customer-edit-profile' });
     },
     handleSettingsClickMu() {
       this.router.push({ name: 'music-edit-profile' });

@@ -10,12 +10,12 @@ export class CustomerApiService {
             return http.get(`/customers/${id}`);
         }
 
-        create(costumerResource) {
-            return http.post('/customers', costumerResource);
+        create(customerResource) {
+            return http.post('/customers', customerResource);
         }
 
-        update(id, costumerResource) {
-            return http.put(`/customers/${id}`, costumerResource);
+        update(id, customerResource) {
+            return http.put(`/customers/${id}`, customerResource);
         }
 
         delete(id) {

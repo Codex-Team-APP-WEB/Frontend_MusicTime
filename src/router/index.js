@@ -31,7 +31,7 @@ const router = createRouter({
         { path: '/music-edit',      name: 'music-edit-profile', component: MusicEditProfileComponent, meta: { title: 'Music Edit Profile' } },
         { path: '/enterprise-edit', name: 'enterprise-edit-profile', component: EnterpriseEditProfileComponent, meta: { title: 'Enterprise Edit Profile' } },
 
-        //Path con boton no es de toolbar
+        //Path con botón no es de toolbar
         { path: '/musician/:id',                component: Musician, meta: { title: 'Musician' }, props: true },
         { path: '/contract/:id',                component: ContractCreationComponent, meta: { title: 'Contract' }, props: true },
         { path: '/payment',                     component: paymentGatewayComponent, meta: { title: 'Payment' }  },

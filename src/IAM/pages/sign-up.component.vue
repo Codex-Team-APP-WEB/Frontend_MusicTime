@@ -5,7 +5,6 @@ import {SignUpRequest} from "../model/sign-up.request.js";
 
 export default {
   name: "sign-up",
-  components: {},
   data() {
     return {
       username: '',
@@ -25,7 +24,7 @@ export default {
 <template>
   <div class="login-container">
     <div class="login-form">
-      <img src="https://res.cloudinary.com/djia8bsvr/image/upload/v1716789390/conciertos-recomendaciones_ofnkkx.jpg" class="background-image" />
+      <img src="https://res.cloudinary.com/djia8bsvr/image/upload/v1716789390/conciertos-recomendaciones_ofnkkx.jpg" alt="Logo" class="background-image" />
       <div class="login-card">
         <div class="login-header">
           <img src="https://res.cloudinary.com/djia8bsvr/image/upload/v1716477202/MusicTime-Logo_nihbnp.jpg" alt="MusicTime Logo" class="logo" />
@@ -102,7 +101,7 @@ export default {
   margin: 0;
 }
 
-.p-fluid .p-field {
+.p-fluid {
   margin-bottom: 1em;
 }
 
