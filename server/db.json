@@ -55,6 +55,12 @@
       "description": "Ráfaga es una banda argentina de música tropical formada en 1994. Son conocidos por sus éxitos en la música de cumbia y han ganado numerosos premios por su contribución al género.",
       "image": "https://res.cloudinary.com/drkelnilg/image/upload/v1716591313/imagen_2024-05-24_175511109_f3sgyv.png",
       "available": true
+    },
+    {
+      "id": 8,
+      "name": "Raaa",
+      "manager": "Ariel Puchetta",
+      "description": "Ráfaga es una banda argentina de música tropical formada en 1994. Son conocidos por sus éxitos en la música de cumbia y han ganado numerosos premios por su contribución al género."
     }
   ],
   "plans": [

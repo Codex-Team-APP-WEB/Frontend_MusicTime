@@ -4,17 +4,17 @@ import http from "../../shared/services/http-common.js";
 export class MusicianApiService {
 
     getAll() {
-        return http.get('/musician');
+        return http.get('/artists');
     }
 
 
     getById(id) {
-        return http.get(`/musician/${id}`);
+        return http.get(`/artists/${id}`);
     }
 
 
     create(musicianResource) {
-        return http.post('/musician', musicianResource);
+        return http.post('/artists', musicianResource);
     }
 
 

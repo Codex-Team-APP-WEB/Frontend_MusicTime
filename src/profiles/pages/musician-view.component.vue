@@ -48,7 +48,7 @@ export default {
                 </div>
               </template>
               <template #title>
-                <span><strong>Name:</strong> {{ musician.name }}</span>
+                <span><strong>Name:</strong> {{ musician.fullName }}</span>
               </template>
               <template #content>
                 <p><strong>Description:</strong> {{ musician.description }}</p>
