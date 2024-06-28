@@ -9,4 +9,9 @@ export class ContractApiService {
         return http.get(import.meta.env.VITE_API_BASE_URL + '/contracts');
     }
 
+    getById(id) {
+        return http.get(import.meta.env.VITE_API_BASE_URL + `/contracts/${id}`);
+    }
+
+
 }

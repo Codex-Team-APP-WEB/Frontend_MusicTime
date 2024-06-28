@@ -1,6 +1,7 @@
 <script>
 import {MusicianApiService} from "../../profiles/services/musician-api.service.js";
 import {CostumerApiService} from "../../profiles/services/costumer-api.service.js";
+import {ContractApiService} from "../services/contract-api.service.js";
 
 export default {
   name: "contract-creation",
@@ -18,7 +19,17 @@ export default {
       musicianService: new MusicianApiService(),
 
       costumer: null,
-      costumerService: new CostumerApiService()
+      costumerService: new CostumerApiService(),
+
+      contractService: new ContractApiService(),
+      contract: {
+        id: 1,
+        customerFullName: "",
+        musicianFullName: "",
+        eventDate: "",
+        eventLocation: "",
+        reason: ""
+      }
 
     };
   },
@@ -29,6 +40,16 @@ export default {
       console.log(musicianData); // Agrega esta línea para imprimir los datos en la consola
       this.selectedMusician = musicianData;
     },
+
+    async createContract() {
+      try {
+        const response = await this.contractService.create(this.contract);
+        console.log(response);
+      } catch (error) {
+        console.error(error);
+      }
+    },
+
   },
   watch: {
     async selectedMusicianId(newId, oldId) {
@@ -66,8 +87,8 @@ export default {
 
             <div v-if="costumer">
               <p><strong>Artista Musical:</strong></p>
-              <p>Nombre del manager: {{ costumer.fullName }}</p>
-              <p>Nombre musical: {{ costumer.address }}</p>
+              <p>Nombre del cliente: {{ costumer.fullName }}</p>
+              <p>Direccion: {{ costumer.address }}</p>
             </div>
 
             <div v-if="musician">
@@ -99,7 +120,7 @@ export default {
               <pv-input-group-addon>
                 <i class="pi pi-gift"></i>
               </pv-input-group-addon>
-              <pv-input-text placeholder="Motivo del evento" />
+              <pv-input-text v-model="contract.reason" placeholder="Motivo del evento" />
             </pv-input-group>
 
             <pv-input-group class="input-group">
@@ -188,7 +209,7 @@ export default {
       </pv-accordion-tab>
     </pv-accordion>
   </div>
-  <pv-button>Send Contract</pv-button>
+  <pv-button @click="createContract">Send Contract</pv-button>
 </template>
 
 <style scoped>
