@@ -20,13 +20,12 @@ export default {
   <div class="toolbar">
     <pv-toolbar>
       <template #start>
-        <pv-avatar image="https://primefaces.org/cdn/primevue/images/avatar/amyelsner.png"
-                   style="width: 32px; height: 32px"/>
+        <pv-avatar image="https://res.cloudinary.com/djia8bsvr/image/upload/v1719565156/Logo_Music-Time_tbakdm.png"
+                   style="width: 155px; height: 52px"/>
       </template>
       <template #center>
       </template>
       <template #end>
-        <authentication-section/>
         <div>
           <router-link to="/home">
             <pv-button label="Home" plain text/>
@@ -44,6 +43,7 @@ export default {
             <pv-button label="Contract Panel" plain text/>
           </router-link>
         </div>
+        <authentication-section/>
       </template>
     </pv-toolbar>
   </div>

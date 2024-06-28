@@ -35,14 +35,21 @@ export default {
 <template>
   <div>
     <div v-if="isSignedIn">
-      <span class="p-button"> Welcome, {{ currentUsername }}</span> <pv-button @click="onSignOut">Sign Out</pv-button>
+      <span class="p-button welcome-text"> Welcome, {{ currentUsername }}</span> <pv-button class="auth-button" @click="onSignOut">Sign Out</pv-button>
     </div>
     <div v-else>
-      <pv-button @click="onSignIn">Sign In</pv-button> <pv-button @click="onSignUp">Sign Up</pv-button>
+      <pv-button class="auth-button" @click="onSignIn">Sign In</pv-button> <pv-button class="auth-button" @click="onSignUp">Sign Up</pv-button>
     </div>
   </div>
 </template>
 
 <style scoped>
-
+.auth-button {
+  background-color: #00236c;
+  color: white;
+}
+.welcome-text {
+  color: white;
+  background-color: #000000;
+}
 </style>
