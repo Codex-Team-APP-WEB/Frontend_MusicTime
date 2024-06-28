@@ -1,5 +1,6 @@
 <script>
 import {MusicianApiService} from "../../profiles/services/musician-api.service.js";
+import {CostumerApiService} from "../../profiles/services/costumer-api.service.js";
 
 export default {
   name: "contract-creation",
@@ -12,6 +13,13 @@ export default {
       templatedisplay: null,
       selectedMusician: null, // Nuevo dato para el músico seleccionado
       selectedMusicianId: null, // Nuevo dato para el ID del músico seleccionado
+
+      musician: null,
+      musicianService: new MusicianApiService(),
+
+      costumer: null,
+      costumerService: new CostumerApiService()
+
     };
   },
   methods: {
@@ -29,6 +37,21 @@ export default {
       }
     },
   },
+  mounted() {
+    const musicianId = this.$route.params.id;
+    this.musicianService.getById(musicianId).then(response => {
+      this.musician = response.data;
+    }).catch(e => {
+      console.error(e);
+    });
+    const costumerId = this.$route.params.id;
+
+    this.costumerService.getById(costumerId).then(response => {
+      this.costumer = response.data;
+    }).catch(e => {
+      console.error(e);
+    });
+  }
 }
 </script>
 <template>
@@ -40,17 +63,17 @@ export default {
       <pv-accordion-tab header="PARTES DEL CONTRATO">
         <div class="container">
           <div class="contract-section">
-            <div>
-              <p><strong>Cliente:</strong></p>
-              <p>Nombre: Víctor Raul</p>
-              <p>Apellidos: Herrera Castillo</p>
-              <p>Teléfono: 987654321</p>
+
+            <div v-if="costumer">
+              <p><strong>Artista Musical:</strong></p>
+              <p>Nombre del manager: {{ costumer.fullName }}</p>
+              <p>Nombre musical: {{ costumer.address }}</p>
             </div>
 
-            <div v-if="selectedMusician">
+            <div v-if="musician">
               <p><strong>Artista Musical:</strong></p>
-              <p>Nombre del artista: {{ selectedMusician.fullName }}</p>
-              <p>Descripción del artista: {{ selectedMusician.description }}</p>
+              <p>Nombre del manager: {{ musician.fullName }}</p>
+              <p>Nombre musical: {{ musician.groupMusician }}</p>
             </div>
           </div>
         </div>

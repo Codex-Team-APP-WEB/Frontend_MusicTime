@@ -20,8 +20,8 @@ export default {
   <div class="toolbar">
     <pv-toolbar>
       <template #start>
-        <pv-avatar image="https://res.cloudinary.com/djia8bsvr/image/upload/v1719565156/Logo_Music-Time_tbakdm.png"
-                   style="width: 155px; height: 52px"/>
+        <pv-avatar image="https://res.cloudinary.com/djia8bsvr/image/upload/v1716477202/MusicTime-Logo_nihbnp.jpg"
+                   style="width: 70px; height: 62px"/>
       </template>
       <template #center>
       </template>
