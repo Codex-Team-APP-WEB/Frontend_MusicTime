@@ -1,45 +1,60 @@
 <script>
-
+import {MusicianApiService} from "../../profiles/services/musician-api.service.js";
 
 export default {
   name: "contract-creation",
+  props: ['id'],
   components: {},
   data() {
     return {
       buttondisplay: null,
       icondisplay: null,
       templatedisplay: null,
+      selectedMusician: null, // Nuevo dato para el músico seleccionado
+      selectedMusicianId: null, // Nuevo dato para el ID del músico seleccionado
     };
-  }
+  },
+  methods: {
+    async loadMusician(id) {
+      const service = new MusicianApiService();
+      const musicianData = await service.getById(id);
+      console.log(musicianData); // Agrega esta línea para imprimir los datos en la consola
+      this.selectedMusician = musicianData;
+    },
+  },
+  watch: {
+    async selectedMusicianId(newId, oldId) {
+      if (newId !== oldId) {
+        await this.loadMusician(newId);
+      }
+    },
+  },
 }
 </script>
-
 <template>
-
   <h1>Contract creation</h1>
   <p>Fill out all the information that will be used to create and send the contract to the musician.</p>
   <h3 style="text-align: center">MUSICAL PRESENTATION CONTRACT</h3>
   <div class="card">
     <pv-accordion :activeIndex="0">
-       <pv-accordion-tab header="PARTES DEL CONTRATO">
-         <div class="container">
-           <div class="contract-section">
-             <div>
-               <p><strong>Cliente:</strong></p>
-               <p>Nombre: Víctor Raul</p>
-               <p>Apellidos: Herrera Castillo</p>
-               <p>Teléfono: 987654321</p>
-             </div>
-             <div>
-               <p><strong>Artista Musical:</strong></p>
-               <p>Nombre del representante: Juan Diego</p>
-               <p>Apellidos del representante: Gutierrez Quispe</p>
-               <p>Teléfono del representante: 987654321</p>
-               <p>Nombre del artista: Grupo 5</p>
-             </div>
-           </div>
-         </div>
-       </pv-accordion-tab>
+      <pv-accordion-tab header="PARTES DEL CONTRATO">
+        <div class="container">
+          <div class="contract-section">
+            <div>
+              <p><strong>Cliente:</strong></p>
+              <p>Nombre: Víctor Raul</p>
+              <p>Apellidos: Herrera Castillo</p>
+              <p>Teléfono: 987654321</p>
+            </div>
+
+            <div v-if="selectedMusician">
+              <p><strong>Artista Musical:</strong></p>
+              <p>Nombre del artista: {{ selectedMusician.fullName }}</p>
+              <p>Descripción del artista: {{ selectedMusician.description }}</p>
+            </div>
+          </div>
+        </div>
+      </pv-accordion-tab>
       <pv-accordion-tab header="INFORMACION DEL EVENTO">
         <div class="event-section">
           <h4>Evento a participar:</h4>
