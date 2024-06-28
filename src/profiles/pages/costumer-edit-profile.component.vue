@@ -1,20 +1,13 @@
 <script>
+import { CustomerApiService } from "../services/customer-api.service.js";
 export default {
   name: "costumer-edit-profile",
   components: {},
   data() {
     return {
-      profile: {
-        id: 1,
-        name: "Pedro",
-        surname: "Perez Perez",
-        phone: "987654321",
-        dni: "12345678",
-        email: "prueba12345@gmail.com",
-        password: "123456",
-        plan: "Basic",
-        planId: "0"
-      }
+      value: {},
+      customer: [],
+      customerService: new CustomerApiService()
     };
   },
   methods: {

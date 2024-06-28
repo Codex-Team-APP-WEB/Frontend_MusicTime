@@ -1,6 +1,6 @@
 <script>
 import {MusicianApiService} from "../../profiles/services/musician-api.service.js";
-import {CostumerApiService} from "../../profiles/services/costumer-api.service.js";
+import {CustomerApiService} from "../../profiles/services/customer-api.service.js";
 import {ContractApiService} from "../services/contract-api.service.js";
 
 export default {
@@ -18,8 +18,8 @@ export default {
       musician: null,
       musicianService: new MusicianApiService(),
 
-      costumer: null,
-      costumerService: new CostumerApiService(),
+      customer: null,
+      customerService: new CustomerApiService(),
 
       contractService: new ContractApiService(),
       contract: {
@@ -65,10 +65,10 @@ export default {
     }).catch(e => {
       console.error(e);
     });
-    const costumerId = this.$route.params.id;
+    const customerId = this.$route.params.id;
 
-    this.costumerService.getById(costumerId).then(response => {
-      this.costumer = response.data;
+    this.customerService.getById(customerId).then(response => {
+      this.customer = response.data;
     }).catch(e => {
       console.error(e);
     });
@@ -85,16 +85,15 @@ export default {
         <div class="container">
           <div class="contract-section">
 
-            <div v-if="costumer">
+            <div v-if="customer">
               <p><strong>Artista Musical:</strong></p>
-              <p>Nombre del cliente: {{ costumer.fullName }}</p>
-              <p>Direccion: {{ costumer.address }}</p>
+              <p>Nombre del cliente: {{ customer.customerFullName }}</p>
+              <p>Direccion: {{ customer.address }}</p>
             </div>
 
             <div v-if="musician">
               <p><strong>Artista Musical:</strong></p>
-              <p>Nombre del manager: {{ musician.fullName }}</p>
-              <p>Nombre musical: {{ musician.groupMusician }}</p>
+              <p>Nombre musical: {{ musician.musicianFullName }}</p>
             </div>
           </div>
         </div>
@@ -162,9 +161,9 @@ export default {
 
       <pv-accordion-tab header="DECLARACIONES">
         <p class="m-0">
-          I. Victor Raul, en lo sucesivo denominado "El Cliente", declara que es una persona física con capacidad legal para contratar y obligarse en términos de este contrato.
+          I. {{customer.customerFullName}}, en lo sucesivo denominado "El Cliente", declara que es una persona física con capacidad legal para contratar y obligarse en términos de este contrato.
         </p>
-        <p>II. Juan Diego, en lo sucesivo denominada "El artista musical", declara que es una persona física con capacidad legal para recibir contratos y obligarse en términos de este contrato.</p>
+        <p>II. {{ musician.musicianFullName }}, en lo sucesivo denominada "El artista musical", declara que es una persona física con capacidad legal para recibir contratos y obligarse en términos de este contrato.</p>
       </pv-accordion-tab>
       <pv-accordion-tab header="OBJETO DEL CONTRATO">
         <p class="m-0">

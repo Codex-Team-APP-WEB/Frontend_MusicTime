@@ -1,9 +1,9 @@
 import http from "../../shared/services/http-common.js";
 
-export class CostumerApiService {
+export class CustomerApiService {
 
         getAll() {
-            return http.get('/costumers');
+            return http.get('/customers');
         }
 
         getById(id) {
@@ -11,14 +11,14 @@ export class CostumerApiService {
         }
 
         create(costumerResource) {
-            return http.post('/costumers', costumerResource);
+            return http.post('/customers', costumerResource);
         }
 
         update(id, costumerResource) {
-            return http.put(`/costumers/${id}`, costumerResource);
+            return http.put(`/customers/${id}`, costumerResource);
         }
 
         delete(id) {
-            return http.delete(`/costumers/${id}`);
+            return http.delete(`/customers/${id}`);
         }
 }
