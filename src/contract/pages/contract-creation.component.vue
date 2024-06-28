@@ -18,8 +18,8 @@ export default {
       musician: null,
       musicianService: new MusicianApiService(),
 
-      customer: null,
-      customerService: new CustomerApiService(),
+      costumer: null,
+      costumerService: new CustomerApiService(),
 
       contractService: new ContractApiService(),
       contract: {
@@ -65,10 +65,10 @@ export default {
     }).catch(e => {
       console.error(e);
     });
-    const customerId = this.$route.params.id;
+    const costumerId = this.$route.params.id;
 
-    this.customerService.getById(customerId).then(response => {
-      this.customer = response.data;
+    this.costumerService.getById(costumerId).then(response => {
+      this.costumer = response.data;
     }).catch(e => {
       console.error(e);
     });
@@ -85,15 +85,16 @@ export default {
         <div class="container">
           <div class="contract-section">
 
-            <div v-if="customer">
+            <div v-if="costumer">
               <p><strong>Artista Musical:</strong></p>
-              <p>Nombre del cliente: {{ customer.customerFullName }}</p>
-              <p>Direccion: {{ customer.address }}</p>
+              <p>Nombre del cliente: {{ costumer.fullName }}</p>
+              <p>Direccion: {{ costumer.address }}</p>
             </div>
 
             <div v-if="musician">
               <p><strong>Artista Musical:</strong></p>
-              <p>Nombre musical: {{ musician.musicianFullName }}</p>
+              <p>Nombre del manager: {{ musician.fullName }}</p>
+              <p>Nombre musical: {{ musician.groupMusician }}</p>
             </div>
           </div>
         </div>
@@ -161,9 +162,9 @@ export default {
 
       <pv-accordion-tab header="DECLARACIONES">
         <p class="m-0">
-          I. {{customer.customerFullName}}, en lo sucesivo denominado "El Cliente", declara que es una persona física con capacidad legal para contratar y obligarse en términos de este contrato.
+          I. Victor Raul, en lo sucesivo denominado "El Cliente", declara que es una persona física con capacidad legal para contratar y obligarse en términos de este contrato.
         </p>
-        <p>II. {{ musician.musicianFullName }}, en lo sucesivo denominada "El artista musical", declara que es una persona física con capacidad legal para recibir contratos y obligarse en términos de este contrato.</p>
+        <p>II. Juan Diego, en lo sucesivo denominada "El artista musical", declara que es una persona física con capacidad legal para recibir contratos y obligarse en términos de este contrato.</p>
       </pv-accordion-tab>
       <pv-accordion-tab header="OBJETO DEL CONTRATO">
         <p class="m-0">

@@ -6,6 +6,7 @@ export default {
   data() {
     return {
       musician: {
+        id: '1', // Asegúrate de tener el id del músico
         firstName: '',
         lastName: '',
         description: '',
@@ -18,7 +19,7 @@ export default {
     async submitForm() {
       const apiService = new MusicianApiService();
       try {
-        const response = await apiService.create(this.musician);
+        const response = await apiService.update(this.musician.id, this.musician);
         console.log(response);
       } catch (error) {
         console.error(error);
@@ -30,27 +31,22 @@ export default {
 
 <template>
   <form @submit.prevent="submitForm">
-    <label>
-      First Name:
-      <input type="text" v-model="musician.firstName">
-    </label>
-    <label>
-      Last Name:
-      <input type="text" v-model="musician.lastName">
-    </label>
-    <label>
-      Description:
-      <textarea v-model="musician.description"></textarea>
-    </label>
-    <label>
-      Image URL:
-      <input type="text" v-model="musician.image">
-    </label>
-    <label>
-      Group Musician:
-      <input type="text" v-model="musician.groupMusician">
-    </label>
-    <button type="submit">Submit</button>
+    <p>First Name:</p>
+    <pv-input-text id="firstName" v-model="musician.firstName" type="text" />
+
+    <p>Last Name:</p>
+    <pv-input-text id="lastName" v-model="musician.lastName" type="text" />
+
+    <p>Description:</p>
+    <pv-input-text id="description" v-model="musician.description" type="text" />
+
+    <p>Image URL:</p>
+    <pv-input-text id="image" v-model="musician.image" type="text" />
+
+    <p>Group Musician:</p>
+    <pv-input-text id="groupMusician" v-model="musician.groupMusician" type="text" />
+
+    <pv-button label="Submit" @click="submitForm" />
   </form>
 </template>
 
