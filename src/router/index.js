@@ -8,12 +8,13 @@ import ContractViewComponent from "../contract/pages/contract-view.component.vue
 import paymentGatewayComponent from "../subscription/pages/payment-gateway.component.vue";
 import ContractPanelComponent from "../contract/pages/contract-panel.component.vue";
 import ContractCreationComponent from "../contract/pages/contract-creation.component.vue";
-import RegisterViewComponent from "../profiles/pages/register-view.component.vue";
-import LoginViewComponent from "../profiles/pages/login-view.component.vue";
 import PageNotFoundComponent from "../public/pages/page-not-found.component.vue";
 import CostumerEditProfileComponent from "../profiles/pages/costumer-edit-profile.component.vue";
 import MusicEditProfileComponent from "../profiles/pages/music-edit-profile.component.vue";
 import EnterpriseEditProfileComponent from "../profiles/pages/enterprise-edit-profile.component.vue";
+import SignInComponent from "../IAM/pages/sign-in.component.vue";
+import SignUpComponent from "../IAM/pages/sign-up.component.vue";
+import {authenticationGuard} from "../IAM/services/authentication.guard.js";
 
 
 const router = createRouter({
@@ -34,8 +35,8 @@ const router = createRouter({
         { path: '/contract/:id', component: ContractCreationComponent, meta: { title: 'Contract' }, props: true },
         { path: '/payment', component: paymentGatewayComponent, meta: { title: 'Payment' }  },
         { path: '/contract-view/:id', component: ContractViewComponent, meta: { title: 'Contract View' }  },
-        { path: '/register', component: RegisterViewComponent, meta: { title: 'Register' }  },
-        { path: '/login', component: LoginViewComponent, meta: { title: 'Login' }  },
+        { path: '/sign-in', name: 'sign-in',    component: SignInComponent,             meta: { title: 'Sign In' } },
+        { path: '/sign-up', name: 'sign-up',    component: SignUpComponent,             meta: { title: 'Sign Up' } },
 
 
         //Path page not found
@@ -50,6 +51,8 @@ router.beforeEach((to, from, next) => {
     let baseTitle = 'MusicTime';
     document.title = `${ baseTitle } | ${ to.meta["title"]}`;
     next();
+
+    authenticationGuard(to, from, next);
 });
 
 export default router;

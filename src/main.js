@@ -63,9 +63,13 @@ import DataViewLayoutOptions from 'primevue/dataviewlayoutoptions'   // optional
 
 
 import router from "./router/index.js";
+import {createPinia} from "pinia";
+
+const pinia = createPinia();
 
 createApp(App)
     .use(router)
+    .use(pinia)
     .use(PrimeVue, {ripple: true})
     .use(ToastService)
     .use(DialogService)

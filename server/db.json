@@ -31,30 +31,6 @@
       "description": "Armonía 10 es una agrupación peruana de cumbia fundada el 25 de junio de 1972 en Piura, Perú. Es conocida por ser una de las bandas más influyentes en la cumbia peruana y ha tenido varios éxitos a lo largo de su carrera.",
       "image": "https://res.cloudinary.com/drkelnilg/image/upload/v1716591161/imagen_2024-05-24_175238241_e9kosg.png",
       "available": true
-    },
-    {
-      "id": 5,
-      "name": "Los Mirlos",
-      "manager": "Jorge Rodríguez Grández",
-      "description": "Los Mirlos es una banda peruana de cumbia amazónica fundada en 1973 en Moyobamba, San Martín. Son conocidos por su estilo único que mezcla la cumbia con sonidos amazónicos, y han sido pioneros en este subgénero.",
-      "image": "https://res.cloudinary.com/drkelnilg/image/upload/v1716591194/imagen_2024-05-24_175312994_emghqb.png",
-      "available": true
-    },
-    {
-      "id": 6,
-      "name": "Grupo Néctar",
-      "manager": "Johnny Orosco",
-      "description": "Grupo Néctar fue una agrupación peruana de cumbia liderada por Johnny Orosco. Fundada en la década de 1990, alcanzaron gran popularidad con su estilo de cumbia tropical. La banda sufrió una trágica pérdida en 2007 cuando varios de sus miembros fallecieron en un accidente.",
-      "image": "https://res.cloudinary.com/drkelnilg/image/upload/v1716591234/imagen_2024-05-24_175348514_pwt2cj.png",
-      "available": false
-    },
-    {
-      "id": 7,
-      "name": "Ráfaga",
-      "manager": "Ariel Puchetta",
-      "description": "Ráfaga es una banda argentina de música tropical formada en 1994. Son conocidos por sus éxitos en la música de cumbia y han ganado numerosos premios por su contribución al género.",
-      "image": "https://res.cloudinary.com/drkelnilg/image/upload/v1716591313/imagen_2024-05-24_175511109_f3sgyv.png",
-      "available": true
     }
   ],
   "plans": [
@@ -111,24 +87,6 @@
       "name": "Juan Mana",
       "status": "Pendiente",
       "date": "2024-06-20"
-    },
-    {
-      "id": 5,
-      "name": "Carlos Pingus",
-      "status": "Activo",
-      "date": "2024-06-21"
-    },
-    {
-      "id": 6,
-      "name": "DJ Peligro",
-      "status": "Pendiente",
-      "date": "2024-06-22"
-    },
-    {
-      "id": 7,
-      "name": "Francis Wisdow",
-      "status": "Activo",
-      "date": "2024-06-25"
     }
   ],
   "profiles": [],
